@@ -1,0 +1,19 @@
+bin/
+obj/
+.publish/
+*.user
+
+Tests/Ahorcado.AcceptanceTests/bin/Debug/net10.0/.playwright/
+
+# Visual Studio
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Playwright
+test-results/
+
+# OS
+.DS_Store

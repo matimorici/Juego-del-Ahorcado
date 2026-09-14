@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Ahorcado.Domain/Ahorcado.Domain.csproj" />
+    <Project Path="src/Ahorcado.Web/Ahorcado.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Ahorcado.AcceptanceTests/Ahorcado.AcceptanceTests.csproj" />
+    <Project Path="tests/Ahorcado.Domain.Tests/Ahorcado.Domain.Tests.csproj" />
+  </Folder>
+</Solution>
