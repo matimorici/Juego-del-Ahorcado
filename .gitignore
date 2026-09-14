@@ -3,7 +3,7 @@ obj/
 .publish/
 *.user
 
-Tests/Ahorcado.AcceptanceTests/bin/Debug/net10.0/.playwright/
+tests/Ahorcado.AcceptanceTests/bin/Debug/net10.0/.playwright/
 
 # Visual Studio
 .vs/
