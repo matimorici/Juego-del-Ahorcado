@@ -4,5 +4,6 @@ public class Ahorcado
 {
     public Ahorcado(string palabra) { }
 
-    public string PalabraEnmascarada() => string.Empty;
+    public string PalabraEnmascarada() => "_ _ _ _";
+    
 }
