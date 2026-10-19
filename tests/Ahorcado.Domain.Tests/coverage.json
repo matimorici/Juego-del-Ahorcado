@@ -1,0 +1,20 @@
+{
+  "Ahorcado.Domain.dll": {
+    "C:\\Users\\Matías\\Documents\\GitHub\\Juego-del-Ahorcado\\src\\Ahorcado.Domain\\Ahorcado.cs": {
+      "Ahorcado.Domain.Ahorcado": {
+        "System.String Ahorcado.Domain.Ahorcado::PalabraEnmascarada()": {
+          "Lines": {
+            "9": 11
+          },
+          "Branches": []
+        },
+        "System.Void Ahorcado.Domain.Ahorcado::.ctor(System.String)": {
+          "Lines": {
+            "7": 4
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

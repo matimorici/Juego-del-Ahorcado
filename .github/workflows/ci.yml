@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
@@ -15,11 +15,17 @@ jobs:
 
   unit-tests:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 10.0.x
-      - name: Unit tests del dominio
-        run: dotnet test tests/Ahorcado.Domain.Tests --configuration Release
+      - name: Unit tests con cobertura (umbral 90% sobre el dominio)
+        run: >
+          dotnet test tests/Ahorcado.Domain.Tests --configuration Release
+          /p:CollectCoverage=true
+          /p:Include="[Ahorcado.Domain]*"
+          /p:Threshold=90
+          /p:ThresholdType=line
+          /p:CoverletOutputFormat=cobertura
