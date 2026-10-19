@@ -10,22 +10,10 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 
 | HU | Criterio de aceptación | Escenario (AT) | Unit Tests | Estado |
 |---|---|---|---|---|
-| **HU-01** Iniciar partida | AC-1: Ver un guion bajo por cada letra de la palabra. | Arrancar la partida con la palabra oculta |  | Pendiente |
-| **HU-01** Iniciar partida | AC-2: Ver 6 vidas | Arrancar la partida con 6 vidas |  | Pendiente |
+| **HU-01** Iniciar partida | AC-1: Ver un guion bajo por cada letra de la palabra. | Arrancar la partida con la palabra oculta (`IniciarPartida.feature`) | `Palabra_enmascarada_de_GATO_muestra_cuatro_guiones`, `Palabra_enmascarada_de_PERRO_muestra_cinco_guiones` | Hecho |
+| **HU-01** Iniciar partida | AC-2: Ver 6 vidas | Arrancar la partida con 6 vidas | | Pendiente |
 
-
-## Pendientes técnicos
-
-- **Levantar la Web automáticamente para los AT (CI):** en Playwright-JS el `webServer` del
-  `playwright.config.ts` levanta la app solo antes de correr los tests. En .NET/Reqnroll no viene
-  gratis: por ahora levantamos `Ahorcado.Web` a mano en otra terminal antes de correr
-  `dotnet test` en `Ahorcado.AcceptanceTests`. Antes del pipeline de CI (§3.5 del TP, etapa 5)
-  hay que resolver esto sin intervención manual. Opciones a evaluar:
-  - Spawnear el proceso (`dotnet run --project src/Ahorcado.Web`) desde un hook
-    `[BeforeTestRun]` en `PlaywrightHooks.cs`, esperar a que responda 200, y matarlo en
-    `[AfterTestRun]`.
-  - Usar `WebApplicationFactory<T>` / `TestServer` de ASP.NET Core para hostear la Web
-    in-process y apuntar Playwright a esa instancia (evita levantar un proceso aparte, pero
-    hay que chequear que sea compatible con Playwright apuntando a una URL real).
-  - Un script/step de CI que levanta la Web en background (`dotnet run &`), espera el health
-    check, corre los AT, y la mata al final.
+## Decisiones técnicas
+- **Levantar la Web para los AT:** el hook `[BeforeTestRun]` de `WebServerHooks.cs` arranca
+  `Ahorcado.Web` con `dotnet run`, espera un 200 (timeout 60 s) y la mata en `[AfterTestRun]`.
+  Si la web no levanta, la corrida de AT falla (rojo honesto, Guía §6).
