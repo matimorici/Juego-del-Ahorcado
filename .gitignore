@@ -17,3 +17,6 @@ test-results/
 
 # OS
 .DS_Store
+*.feature.cs
+TestResults/
+coverage/
