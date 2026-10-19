@@ -9,3 +9,8 @@ Característica: Iniciar partida
   Escenario: Arrancar la partida con la palabra oculta
     Dado que ingreso con la palabra "GATO"
     Entonces veo la palabra "_ _ _ _"
+    
+  @AC-2
+  Escenario: Arrancar la partida con 6 vidas
+    Dado que ingreso con la palabra "GATO"
+    Entonces veo 6 vidas
