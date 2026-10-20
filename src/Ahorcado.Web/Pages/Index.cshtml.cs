@@ -5,13 +5,21 @@ namespace Ahorcado.Web.Pages;
 
 public class IndexModel : PageModel
 {
+    public string Palabra { get; private set; } = "";
     public string PalabraEnmascarada { get; private set; } = "";
     public int Vidas { get; private set; }
 
     public void OnGet()
     {
-        var palabra = Request.Query["word"].ToString();
-        var juego = new Juego(palabra);
+        Palabra = Request.Query["word"].ToString();
+        var letra = Request.Query["letter"].ToString();
+
+        var juego = new Juego(Palabra);
+        if (letra.Length > 0)
+        {
+            juego.Adivinar(letra);
+        }
+
         PalabraEnmascarada = juego.PalabraEnmascarada();
         Vidas = juego.Vidas;
     }

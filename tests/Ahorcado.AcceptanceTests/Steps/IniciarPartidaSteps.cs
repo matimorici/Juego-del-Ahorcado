@@ -20,4 +20,12 @@ public class IniciarPartidaSteps
     [Then(@"veo (\d+) vidas")]
     public async Task EntoncesVeoVidas(int vidas)
         => await Expect(_page.GetByTestId("lives")).ToHaveTextAsync(vidas.ToString());
+
+    [When(@"adivino la letra ""(.*)""")]
+    public async Task CuandoAdivinoLaLetra(string letra)
+    {
+        var campo = _page.GetByRole(AriaRole.Textbox);
+        await campo.FillAsync(letra);
+        await campo.PressAsync("Enter");
+    }
 }
