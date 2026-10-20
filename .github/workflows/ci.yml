@@ -82,3 +82,20 @@ jobs:
         run: pwsh tests/Ahorcado.AcceptanceTests/bin/Release/net10.0/playwright.ps1 install --with-deps chromium
       - name: Acceptance tests
         run: dotnet test tests/Ahorcado.AcceptanceTests --configuration Release --no-build
+
+  deploy:
+    needs: acceptance-tests
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Disparar el deploy en Render
+        run: curl --fail -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+      - name: Esperar a que el juego esté online
+        run: |
+          for i in $(seq 1 60); do
+            if curl -fsS "${{ vars.APP_URL }}/?word=GATO" | grep -q 'data-testid="word"'; then
+              echo "OK: el juego responde"; exit 0
+            fi
+            sleep 10
+          done
+          echo "La app no respondió a tiempo"; exit 1
