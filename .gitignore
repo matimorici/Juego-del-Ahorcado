@@ -21,4 +21,5 @@ test-results/
 TestResults/
 coverage/
 
+coverage.json
 coverage.cobertura.xml
