@@ -20,3 +20,6 @@ test-results/
 *.feature.cs
 TestResults/
 coverage/
+
+coverage.json
+coverage.cobertura.xml

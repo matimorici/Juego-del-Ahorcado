@@ -1,0 +1,84 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Compilar
+        run: dotnet build --configuration Release
+
+  unit-tests:
+    needs: build
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Unit tests con cobertura (umbral 90% sobre el dominio)
+        run: >
+          dotnet test tests/Ahorcado.Domain.Tests --configuration Release
+          /p:CollectCoverage=true
+          /p:Include="[Ahorcado.Domain]*"
+          /p:Threshold=90
+          /p:ThresholdType=line
+          /p:CoverletOutputFormat=cobertura
+
+  sonar:
+    needs: unit-tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Instalar scanner
+        run: dotnet tool install --global dotnet-sonarscanner
+      - name: Sonar begin
+        run: >
+          dotnet sonarscanner begin
+          /k:"matimorici_Juego-del-Ahorcado"
+          /o:"matimorici"
+          /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          /d:sonar.host.url="https://sonarcloud.io"
+          /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml"
+          /d:sonar.exclusions="**/wwwroot/lib/**"
+          /d:sonar.coverage.exclusions="src/Ahorcado.Web/**,tests/**"
+          /d:sonar.qualitygate.wait=true
+      - name: Build
+        run: dotnet build --configuration Release --no-incremental
+      - name: Tests con cobertura para Sonar
+        run: >
+          dotnet test tests/Ahorcado.Domain.Tests --configuration Release --no-build
+          /p:CollectCoverage=true
+          /p:Include="[Ahorcado.Domain]*"
+          /p:CoverletOutputFormat=opencover
+      - name: Sonar end (espera el quality gate)
+        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+  acceptance-tests:
+    needs: sonar
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Compilar
+        run: dotnet build --configuration Release
+      - name: Instalar navegador de Playwright
+        run: pwsh tests/Ahorcado.AcceptanceTests/bin/Release/net10.0/playwright.ps1 install --with-deps chromium
+      - name: Acceptance tests
+        run: dotnet test tests/Ahorcado.AcceptanceTests --configuration Release --no-build
