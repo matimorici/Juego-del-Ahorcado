@@ -9,4 +9,6 @@ public class Ahorcado
     public int Vidas => 6;
 
     public string PalabraEnmascarada() => string.Join(" ", _palabra.Select(_ => "_"));
+
+    public void Adivinar(string letra) { }
 }
