@@ -22,4 +22,4 @@ app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
 
-app.Run();
+await app.RunAsync();
