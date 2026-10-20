@@ -31,4 +31,11 @@ public class AhorcadoTests
         juego.Adivinar("A");
         Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("_ A _ _"));
     }
+    [Test]
+    public void Adivinar_letra_presente_revela_todas_sus_ocurrencias()
+    {
+        var juego = new Ahorcado("ALA");
+        juego.Adivinar("A");
+        Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("A _ A"));
+    }
 }
