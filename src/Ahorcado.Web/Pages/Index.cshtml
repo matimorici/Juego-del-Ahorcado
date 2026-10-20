@@ -8,4 +8,10 @@
     <h1 class="display-4">Ahorcado</h1>
     <p data-testid="word">@Model.PalabraEnmascarada</p>
     <p>Vidas: <span data-testid="lives">@Model.Vidas</span></p>
+
+    <form method="get">
+        <input type="hidden" name="word" value="@Model.Palabra" />
+        <input type="text" name="letter" autocomplete="off" />
+        <button type="submit">Adivinar</button>
+    </form>
 </div>
