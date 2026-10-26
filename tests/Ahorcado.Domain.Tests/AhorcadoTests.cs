@@ -54,4 +54,14 @@ public class AhorcadoTests
 
         Assert.That(juego.Vidas, Is.EqualTo(5));
     }
+    [Test]
+    public void Adivinar_dos_letras_ausentes_descuentan_dos_vidas()
+    {
+        var juego = new Ahorcado("GATO");
+
+        juego.Adivinar("E");
+        juego.Adivinar("X");
+
+        Assert.That(juego.Vidas, Is.EqualTo(4));
+    }
 }
