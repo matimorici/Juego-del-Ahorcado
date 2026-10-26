@@ -9,7 +9,11 @@ public class Ahorcado
 
     public int Vidas => 6;
 
-    public void Adivinar(string letra) => _letrasAdivinadas.Add(letra[0]);
+    public void Adivinar(string letra)
+    {
+        _letrasAdivinadas.Add(letra[0]);
+        LetrasJugadas = letra;
+    }
 
     public string PalabraEnmascarada() =>
         string.Join(" ", _palabra.Select(c => _letrasAdivinadas.Contains(c) ? c.ToString() : "_"));
@@ -18,6 +22,6 @@ public class Ahorcado
     public Ahorcado(string palabra) =>
         _palabra = string.IsNullOrEmpty(palabra) ? PalabraPorDefecto : palabra;
 
-    public string LetrasJugadas => "";
+    public string LetrasJugadas { get; private set; } = "";
     
 }
