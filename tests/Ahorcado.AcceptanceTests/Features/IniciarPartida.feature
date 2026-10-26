@@ -14,3 +14,8 @@ Característica: Iniciar partida
   Escenario: Arrancar la partida con 6 vidas
     Dado que ingreso con la palabra "GATO"
     Entonces veo 6 vidas
+  @AC-3
+  Escenario: Arrancar la partida sin indicar una palabra
+    Dado que ingreso sin indicar una palabra
+    Entonces veo una palabra oculta
+    Y veo 6 vidas

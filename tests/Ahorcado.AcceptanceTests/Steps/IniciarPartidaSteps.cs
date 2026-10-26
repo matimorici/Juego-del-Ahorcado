@@ -1,6 +1,7 @@
 using Microsoft.Playwright;
 using Reqnroll;
 using static Microsoft.Playwright.Assertions;
+using System.Text.RegularExpressions;
 
 [Binding]
 public class IniciarPartidaSteps
@@ -28,4 +29,12 @@ public class IniciarPartidaSteps
         await campo.FillAsync(letra);
         await campo.PressAsync("Enter");
     }
+    
+    [Given(@"que ingreso sin indicar una palabra")]
+    public async Task DadoQueIngresoSinIndicarUnaPalabra()
+        => await _page.GotoAsync(WebServerHooks.BaseUrl);
+
+    [Then(@"veo una palabra oculta")]
+    public async Task EntoncesVeoUnaPalabraOculta()
+        => await Expect(_page.GetByTestId("word")).ToHaveTextAsync(new Regex(@"^_( _)*$"));
 }
