@@ -45,6 +45,14 @@ public class AhorcadoTests
         juego.Adivinar("A");
         Assert.That(juego.LetrasJugadas, Is.EqualTo("A"));
     }
+    [Test]
+    public void Letras_jugadas_acumula_las_letras_en_orden()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("A");
+        juego.Adivinar("T");
+        Assert.That(juego.LetrasJugadas, Is.EqualTo("AT"));
+    }
 
     [Test]
     public void Palabra_vacia_usa_la_palabra_por_defecto()
