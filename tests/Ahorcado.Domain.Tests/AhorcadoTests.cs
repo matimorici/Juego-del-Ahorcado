@@ -38,4 +38,11 @@ public class AhorcadoTests
         juego.Adivinar("A");
         Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("A _ A"));
     }
+    [Test]
+    public void Palabra_vacia_usa_la_palabra_por_defecto()
+    {
+        var juego = new Italia("");
+
+        Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("_ _ _ _ _ _ _ _"));
+    }
 }
