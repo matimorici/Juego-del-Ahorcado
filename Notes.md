@@ -12,6 +12,7 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 |---|---|---|---|---|
 | **HU-01** Iniciar partida | AC-1: Ver un guion bajo por cada letra de la palabra. | Arrancar la partida con la palabra oculta (`IniciarPartida.feature`) | `Palabra_enmascarada_de_GATO_muestra_cuatro_guiones`, `Palabra_enmascarada_de_PERRO_muestra_cinco_guiones` | Hecho |
 | **HU-01** Iniciar partida | AC-2: Ver 6 vidas | Arrancar la partida con 6 vidas | `Vidas_AlIniciarPartida_SonSeis` | Hecho |
+| **HU-01** Iniciar partida | AC-3: Arrancar sin indicar la palabra y ver una palabra oculta. | Arrancar la partida sin indicar una palabra (`IniciarPartida.feature`) | `Palabra_vacia_usa_la_palabra_por_defecto` | En progreso |
 | **HU-02** Adivinar letras | AC-1: Una letra presente se revela sin perder vidas. | Acertar una letra (`AdivinarLetras.feature`) | `Adivinar_letra_presente_revela_su_posicion`, `Adivinar_letra_presente_revela_todas_sus_ocurrencias` | Hecho |
 ## Decisiones técnicas
 - **Levantar la Web para los AT:** el hook `[BeforeTestRun]` de `WebServerHooks.cs` arranca
