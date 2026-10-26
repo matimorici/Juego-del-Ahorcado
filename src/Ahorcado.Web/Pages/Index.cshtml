@@ -11,6 +11,7 @@
 
     <form method="get">
         <input type="hidden" name="word" value="@Model.Palabra" />
+        <input type="hidden" name="played" value="@Model.LetrasJugadas" />
         <label for="letter">Letra</label>
         <input type="text" id="letter" name="letter" autocomplete="off" />
         <button type="submit">Adivinar</button>
