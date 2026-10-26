@@ -17,5 +17,7 @@ public class Ahorcado
 
     public Ahorcado(string palabra) =>
         _palabra = string.IsNullOrEmpty(palabra) ? PalabraPorDefecto : palabra;
+
+    public string LetrasJugadas => "";
     
 }

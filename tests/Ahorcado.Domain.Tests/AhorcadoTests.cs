@@ -39,6 +39,14 @@ public class AhorcadoTests
         Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("A _ A"));
     }
     [Test]
+    public void Letras_jugadas_registra_la_letra_adivinada()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("A");
+        Assert.That(juego.LetrasJugadas, Is.EqualTo("A"));
+    }
+
+    [Test]
     public void Palabra_vacia_usa_la_palabra_por_defecto()
     {
         var juego = new Ahorcado("");
