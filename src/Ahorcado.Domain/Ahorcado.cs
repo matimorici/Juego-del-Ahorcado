@@ -12,7 +12,7 @@ public class Ahorcado
     public void Adivinar(string letra)
     {
         _letrasAdivinadas.Add(letra[0]);
-        LetrasJugadas = letra;
+        LetrasJugadas += letra[0];
     }
 
     public string PalabraEnmascarada() =>
