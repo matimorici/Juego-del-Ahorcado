@@ -14,7 +14,7 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 | **HU-01** Iniciar partida | AC-2: Ver 6 vidas | Arrancar la partida con 6 vidas | `Vidas_al_iniciar_la_partida_son_seis` | Hecho  |
 | **HU-01** Iniciar partida | AC-3: Arrancar sin indicar la palabra y ver una palabra oculta. | Arrancar la partida sin indicar una palabra (`IniciarPartida.feature`) | `Palabra_vacia_usa_la_palabra_por_defecto` | Hecho  |
 | **HU-02** Adivinar letras | AC-1: Una letra presente se revela sin perder vidas. | Acertar una letra (`AdivinarLetras.feature`) | `Adivinar_letra_presente_revela_su_posicion`, `Adivinar_letra_presente_revela_todas_sus_ocurrencias` | Hecho  |
-| **HU-02** Adivinar letras | AC-2: Las letras acertadas se acumulan (GATO + `A` + `T` → `_ A T _`). | Las letras acertadas se acumulan (`AdivinarLetras.feature`) | `Letras_jugadas_registra_la_letra_adivinada`, `Letras_jugadas_acumula_las_letras_en_orden` | En progreso |
+| **HU-02** Adivinar letras | AC-2: Las letras acertadas se acumulan (GATO + `A` + `T` → `_ A T _`). | Las letras acertadas se acumulan (`AdivinarLetras.feature`) | `Letras_jugadas_registra_la_letra_adivinada`, `Letras_jugadas_acumula_las_letras_en_orden` | Hecho |
 
 ## Decisiones técnicas
 - **Levantar la Web para los AT:** el hook `[BeforeTestRun]` de `WebServerHooks.cs` arranca
