@@ -41,7 +41,7 @@ public class AhorcadoTests
     [Test]
     public void Palabra_vacia_usa_la_palabra_por_defecto()
     {
-        var juego = new Italia("");
+        var juego = new Ahorcado("");
 
         Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("_ _ _ _ _ _ _ _"));
     }
