@@ -17,7 +17,8 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 | **HU-02** Adivinar letras | AC-2: Una letra ausente cuesta una vida. | Fallar una letra (`AdivinarLetras.feature`) | `Adivinar_letra_ausente_descuenta_una_vida`, `Adivinar_dos_letras_ausentes_descuentan_dos_vidas` | Hecho  |
 | **HU-02** Adivinar letras | AC-3: Las letras acertadas se acumulan (GATO + `A` + `T` → `_ A T _`). | Las letras acertadas se acumulan (`AdivinarLetras.feature`) | `Letras_jugadas_registra_la_letra_adivinada`, `Letras_jugadas_acumula_las_letras_en_orden` | Hecho |
 | **HU-02** Adivinar letras | AC-4: Repetir una letra ya probada no cuesta vidas y avisa (GATO + `E` + `E` → 5 vidas y "Ya probaste la letra E"). | Repetir una letra ya probada no cuesta otra vida (`AdivinarLetras.feature`) | `Letra_repetida_no_descuenta_otra_vida`, `Letra_repetida_queda_informada` | Hecho |
-| **HU-03** Terminar partida | AC-1: Al completar todas las letras de la palabra se ve "GANASTE". | Ganar la partida (`TerminarPartida.feature`) | `Gano_al_adivinar_todas_las_letras`, `No_gano_si_faltan_letras` | Hecho  |
+| **HU-03** Terminar partida | AC-1: Al completar todas las letras de la palabra se ve "GANASTE". | Ganar la partida (`TerminarPartida.feature`) | `Gano_al_adivinar_todas_las_letras`, `No_gano_si_faltan_letras` | Hecho |
+| **HU-03** Terminar partida | AC-2: Al agotar las 6 vidas se ve "PERDISTE" y la palabra revelada. | Perder la partida (`TerminarPartida.feature`) | `Perdio_al_agotar_las_vidas`, `No_perdio_con_cinco_fallos`, `Palabra_se_revela_al_perder` | Hecho |
 
 ## Decisiones técnicas
 - **Levantar la Web para los AT:** el hook `[BeforeTestRun]` de `WebServerHooks.cs` arranca

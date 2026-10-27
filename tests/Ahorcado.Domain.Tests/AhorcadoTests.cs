@@ -120,4 +120,34 @@ public class AhorcadoTests
 
     	Assert.That(juego.Gano, Is.False);
 	}
+    [Test]
+    public void Perdio_al_agotar_las_vidas()
+    {
+        var juego = new Ahorcado("GATO");
+
+        foreach (var letra in new[] { "B", "C", "D", "E", "F", "H" })
+            juego.Adivinar(letra);
+
+        Assert.That(juego.Perdio, Is.True);
+    }
+    [Test]
+    public void No_perdio_con_cinco_fallos()
+    {
+        var juego = new Ahorcado("GATO");
+
+        foreach (var letra in new[] { "B", "C", "D", "E", "F" })
+            juego.Adivinar(letra);
+
+        Assert.That(juego.Perdio, Is.False);
+    }
+    [Test]
+    public void Palabra_se_revela_al_perder()
+    {
+        var juego = new Ahorcado("GATO");
+
+        foreach (var letra in new[] { "B", "C", "D", "E", "F", "H" })
+            juego.Adivinar(letra);
+
+        Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("G A T O"));
+    }
 }
