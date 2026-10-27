@@ -8,13 +8,20 @@ public class IndexModel : PageModel
     public string Palabra { get; private set; } = "";
     public string PalabraEnmascarada { get; private set; } = "";
     public int Vidas { get; private set; }
+    public string LetrasJugadas { get; private set; } = "";
 
     public void OnGet()
     {
         Palabra = Request.Query["word"].ToString();
+        var jugadas = Request.Query["played"].ToString();
         var letra = Request.Query["letter"].ToString();
 
         var juego = new Juego(Palabra);
+        foreach (var anterior in jugadas)
+        {
+            juego.Adivinar(anterior.ToString());
+        }
+
         if (letra.Length > 0)
         {
             juego.Adivinar(letra);
@@ -22,5 +29,6 @@ public class IndexModel : PageModel
 
         PalabraEnmascarada = juego.PalabraEnmascarada();
         Vidas = juego.Vidas;
+        LetrasJugadas = juego.LetrasJugadas;
     }
 }
