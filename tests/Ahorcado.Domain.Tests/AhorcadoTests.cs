@@ -80,4 +80,21 @@ public class AhorcadoTests
 
         Assert.That(juego.Vidas, Is.EqualTo(4));
     }
+
+    [Test]
+    public void Letra_repetida_no_descuenta_otra_vida()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("E");
+        juego.Adivinar("E");
+        Assert.That(juego.Vidas, Is.EqualTo(5));
+    }
+    [Test]
+    public void Letra_repetida_queda_informada()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("E");
+        juego.Adivinar("E");
+        Assert.That(juego.UltimaJugadaRepetida, Is.True);
+    }
 }
