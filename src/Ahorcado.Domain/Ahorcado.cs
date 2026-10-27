@@ -7,9 +7,7 @@ public class Ahorcado
 
     public string PalabraEnmascarada() =>
         string.Join(" ", _palabra.Select(c => _letrasAdivinadas.Contains(c) ? c.ToString() : "_"));
-
-    private const string PalabraPorDefecto = "AHORCADO";
-
+	public bool Gano => _palabra.All(c => _letrasAdivinadas.Contains(c));    private const string PalabraPorDefecto = "AHORCADO";
     public Ahorcado(string palabra) =>
         _palabra = string.IsNullOrEmpty(palabra) ? PalabraPorDefecto : palabra;
 

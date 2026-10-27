@@ -17,4 +17,8 @@
         <input type="text" id="letter" name="letter" autocomplete="off" />
         <button type="submit">Adivinar</button>
     </form>
+    @if (Model.Gano)
+    {
+        <p data-testid="result">GANASTE</p>
+    }
 </div>

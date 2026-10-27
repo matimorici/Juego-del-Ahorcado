@@ -97,4 +97,27 @@ public class AhorcadoTests
         juego.Adivinar("E");
         Assert.That(juego.UltimaJugadaRepetida, Is.True);
     }
+	[Test]
+	public void Gano_al_adivinar_todas_las_letras()
+	{
+    	var juego = new Ahorcado("GATO");
+
+    	juego.Adivinar("G");
+    	juego.Adivinar("A");
+    	juego.Adivinar("T");
+    	juego.Adivinar("O");
+
+    	Assert.That(juego.Gano, Is.True);
+	}
+	[Test]
+	public void No_gano_si_faltan_letras()
+	{
+	    var juego = new Ahorcado("GATO");
+
+    	juego.Adivinar("G");
+    	juego.Adivinar("A");
+	    juego.Adivinar("T");
+
+    	Assert.That(juego.Gano, Is.False);
+	}
 }
