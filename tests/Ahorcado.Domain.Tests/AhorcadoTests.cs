@@ -61,4 +61,23 @@ public class AhorcadoTests
 
         Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("_ _ _ _ _ _ _ _"));
     }
+    [Test]
+    public void Adivinar_letra_ausente_descuenta_una_vida()
+    {
+        var juego = new Ahorcado("GATO");
+
+        juego.Adivinar("E");
+
+        Assert.That(juego.Vidas, Is.EqualTo(5));
+    }
+    [Test]
+    public void Adivinar_dos_letras_ausentes_descuentan_dos_vidas()
+    {
+        var juego = new Ahorcado("GATO");
+
+        juego.Adivinar("E");
+        juego.Adivinar("X");
+
+        Assert.That(juego.Vidas, Is.EqualTo(4));
+    }
 }
