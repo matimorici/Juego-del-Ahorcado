@@ -18,6 +18,7 @@ public class Ahorcado
     public int Vidas => _vidas;
 
     public string LetrasJugadas { get; private set; } = "";
+    public bool UltimaJugadaRepetida => false;
 
     public void Adivinar(string letra)
     {
