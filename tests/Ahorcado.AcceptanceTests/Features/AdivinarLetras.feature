@@ -26,3 +26,11 @@ Característica: Adivinar letras
     Y adivino la letra "T"
     Entonces veo la palabra "_ A T _"
     Y veo 6 vidas
+
+  @AC-4
+  Escenario: Repetir una letra ya probada no cuesta otra vida
+    Dado que ingreso con la palabra "GATO"
+    Cuando adivino la letra "E"
+    Y adivino la letra "E"
+    Entonces veo 5 vidas
+    Y veo el mensaje "Ya probaste la letra E"

@@ -37,4 +37,8 @@ public class IniciarPartidaSteps
     [Then(@"veo una palabra oculta")]
     public async Task EntoncesVeoUnaPalabraOculta()
         => await Expect(_page.GetByTestId("word")).ToHaveTextAsync(new Regex(@"^_( _)*$"));
+
+    [Then(@"veo el mensaje ""(.*)""")]
+    public async Task EntoncesVeoElMensaje(string esperado)
+        => await Expect(_page.GetByTestId("message")).ToHaveTextAsync(esperado);
 }
