@@ -92,4 +92,15 @@ public class AhorcadoTests
 
     	Assert.That(juego.Gano, Is.True);
 	}
+	[Test]
+	public void No_gano_si_faltan_letras()
+	{
+	    var juego = new Ahorcado("GATO");
+
+    	juego.Adivinar("G");
+    	juego.Adivinar("A");
+	    juego.Adivinar("T");
+
+    	Assert.That(juego.Gano, Is.False);
+	}
 }
