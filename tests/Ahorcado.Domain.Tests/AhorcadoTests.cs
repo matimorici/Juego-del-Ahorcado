@@ -80,4 +80,16 @@ public class AhorcadoTests
 
         Assert.That(juego.Vidas, Is.EqualTo(4));
     }
+	[Test]
+	public void Gano_al_adivinar_todas_las_letras()
+	{
+    	var juego = new Ahorcado("GATO");
+
+    	juego.Adivinar("G");
+    	juego.Adivinar("A");
+    	juego.Adivinar("T");
+    	juego.Adivinar("O");
+
+    	Assert.That(juego.Gano, Is.True);
+	}
 }
