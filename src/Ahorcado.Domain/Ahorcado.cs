@@ -14,7 +14,7 @@ public class Ahorcado
     private int _vidas = 6;
 
     public int Vidas => _vidas;
-    public bool Perdio => true;
+    public bool Perdio => _vidas <= 0;
 
     public string LetrasJugadas { get; private set; } = "";
     public bool UltimaJugadaRepetida { get; private set; }
