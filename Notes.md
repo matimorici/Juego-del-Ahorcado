@@ -16,7 +16,7 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 | **HU-02** Adivinar letras | AC-1: Una letra presente se revela sin perder vidas. | Acertar una letra (`AdivinarLetras.feature`) | `Adivinar_letra_presente_revela_su_posicion`, `Adivinar_letra_presente_revela_todas_sus_ocurrencias` | Hecho  |
 | **HU-02** Adivinar letras | AC-2: Una letra ausente cuesta una vida. | Fallar una letra (`AdivinarLetras.feature`) | `Adivinar_letra_ausente_descuenta_una_vida`, `Adivinar_dos_letras_ausentes_descuentan_dos_vidas` | Hecho  |
 | **HU-02** Adivinar letras | AC-3: Las letras acertadas se acumulan (GATO + `A` + `T` → `_ A T _`). | Las letras acertadas se acumulan (`AdivinarLetras.feature`) | `Letras_jugadas_registra_la_letra_adivinada`, `Letras_jugadas_acumula_las_letras_en_orden` | Hecho |
-| **HU-02** Adivinar letras | AC-4: Repetir una letra ya probada no cuesta vidas y avisa (GATO + `E` + `E` → 5 vidas y "Ya probaste la letra E"). | Repetir una letra ya probada no cuesta otra vida (`AdivinarLetras.feature`) | `Letra_repetida_no_descuenta_otra_vida`, `Letra_repetida_queda_informada` | En progreso |
+| **HU-02** Adivinar letras | AC-4: Repetir una letra ya probada no cuesta vidas y avisa (GATO + `E` + `E` → 5 vidas y "Ya probaste la letra E"). | Repetir una letra ya probada no cuesta otra vida (`AdivinarLetras.feature`) | `Letra_repetida_no_descuenta_otra_vida`, `Letra_repetida_queda_informada` | Hecho |
 
 ## Decisiones técnicas
 - **Levantar la Web para los AT:** el hook `[BeforeTestRun]` de `WebServerHooks.cs` arranca
