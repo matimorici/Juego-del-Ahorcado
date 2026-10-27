@@ -9,6 +9,7 @@ public class IndexModel : PageModel
     public string PalabraEnmascarada { get; private set; } = "";
     public int Vidas { get; private set; }
     public string LetrasJugadas { get; private set; } = "";
+    public string Mensaje { get; private set; } = "";
 
     public void OnGet()
     {
@@ -25,6 +26,10 @@ public class IndexModel : PageModel
         if (letra.Length > 0)
         {
             juego.Adivinar(letra);
+            if (juego.UltimaJugadaRepetida)
+            {
+                Mensaje = $"Ya probaste la letra {letra}";
+            }
         }
 
         PalabraEnmascarada = juego.PalabraEnmascarada();
