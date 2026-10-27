@@ -20,10 +20,12 @@ public class Ahorcado
 
     public void Adivinar(string letra)
     {
-		UltimaJugadaRepetida = !_letrasAdivinadas.Add(char.ToUpperInvariant(letra[0]));
+        var normalizada = char.ToUpperInvariant(letra[0]);
+
+        UltimaJugadaRepetida = !_letrasAdivinadas.Add(normalizada);
         if (UltimaJugadaRepetida) return;
 
         LetrasJugadas += letra[0];
-        if (!_palabra.Contains(letra[0])) _vidas--;
+        if (!_palabra.Contains(normalizada)) _vidas--;
     }
 }
