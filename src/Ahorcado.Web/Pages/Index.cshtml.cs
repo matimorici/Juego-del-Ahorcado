@@ -11,6 +11,7 @@ public class IndexModel : PageModel
     public string LetrasJugadas { get; private set; } = "";
     public string Mensaje { get; private set; } = "";
     public bool Gano { get; private set; }
+    public bool Perdio { get; private set; }
 
     public void OnGet()
     {
@@ -36,6 +37,7 @@ public class IndexModel : PageModel
         PalabraEnmascarada = juego.PalabraEnmascarada();
         Vidas = juego.Vidas;
         Gano = juego.Gano;
+        Perdio = juego.Perdio;
         LetrasJugadas = juego.LetrasJugadas;
     }
 }
