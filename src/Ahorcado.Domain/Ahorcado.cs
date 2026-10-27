@@ -21,7 +21,8 @@ public class Ahorcado
 
     public void Adivinar(string letra)
     {
-        _letrasAdivinadas.Add(letra[0]);
+        if (!_letrasAdivinadas.Add(letra[0])) return;
+
         LetrasJugadas += letra[0];
         if (!_palabra.Contains(letra[0])) _vidas--;
     }
