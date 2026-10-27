@@ -120,4 +120,14 @@ public class AhorcadoTests
 
     	Assert.That(juego.Gano, Is.False);
 	}
+    [Test]
+    public void Perdio_al_agotar_las_vidas()
+    {
+        var juego = new Ahorcado("GATO");
+
+        foreach (var letra in new[] { "B", "C", "D", "E", "F", "H" })
+            juego.Adivinar(letra);
+
+        Assert.That(juego.Perdio, Is.True);
+    }
 }
