@@ -120,4 +120,13 @@ public class AhorcadoTests
 
     	Assert.That(juego.Gano, Is.False);
 	}
+    [Test]
+    public void Adivinar_letra_en_minuscula_revela_la_letra_en_mayuscula()
+    {
+        var juego = new Ahorcado("GATO");
+
+        juego.Adivinar("a");
+
+        Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("_ A _ _"));
+    }
 }
