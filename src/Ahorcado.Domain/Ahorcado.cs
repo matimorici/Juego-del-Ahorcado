@@ -18,11 +18,12 @@ public class Ahorcado
     public int Vidas => _vidas;
 
     public string LetrasJugadas { get; private set; } = "";
-    public bool UltimaJugadaRepetida => false;
+    public bool UltimaJugadaRepetida { get; private set; }
 
     public void Adivinar(string letra)
     {
-        if (!_letrasAdivinadas.Add(letra[0])) return;
+        UltimaJugadaRepetida = !_letrasAdivinadas.Add(letra[0]);
+        if (UltimaJugadaRepetida) return;
 
         LetrasJugadas += letra[0];
         if (!_palabra.Contains(letra[0])) _vidas--;
