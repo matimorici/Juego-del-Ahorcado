@@ -140,4 +140,14 @@ public class AhorcadoTests
 
         Assert.That(juego.Perdio, Is.False);
     }
+    [Test]
+    public void Palabra_se_revela_al_perder()
+    {
+        var juego = new Ahorcado("GATO");
+
+        foreach (var letra in new[] { "B", "C", "D", "E", "F", "H" })
+            juego.Adivinar(letra);
+
+        Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("G A T O"));
+    }
 }
