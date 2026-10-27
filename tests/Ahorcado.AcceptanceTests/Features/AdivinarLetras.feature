@@ -12,7 +12,7 @@ Característica: Adivinar letras
     Entonces veo la palabra "_ A _ _"
     Y veo 6 vidas
 
-  @AC-2
+  @AC-3
   Escenario: Las letras acertadas se acumulan
     Dado que ingreso con la palabra "GATO"
     Cuando adivino la letra "A"
