@@ -185,4 +185,33 @@ public class AhorcadoTests
         juego.Adivinar("Z");
         Assert.That(juego.Vidas, Is.EqualTo(6));
     }
+
+    [Test]
+    public void Adivinar_letra_sin_tilde_revela_la_letra_con_tilde()
+    {
+        var juego = new Ahorcado("CANCIÓN");
+        juego.Adivinar("O");
+        Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("_ _ _ _ _ Ó _"));
+    }
+    [Test]
+    public void Gano_con_palabra_con_tilde()
+    {
+        var juego = new Ahorcado("CANCIÓN");
+        foreach (var letra in "CANIO") juego.Adivinar(letra.ToString());
+        Assert.That(juego.Gano, Is.True);
+    }
+    [Test]
+    public void Adivinar_n_no_revela_la_enie()
+    {
+        var juego = new Ahorcado("NIÑO");
+        juego.Adivinar("N");
+        Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("N _ _ _"));
+    }
+    [Test]
+    public void Adivinar_enie_revela_la_enie()
+    {
+        var juego = new Ahorcado("NIÑO");
+        juego.Adivinar("Ñ");
+        Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("_ _ Ñ _"));
+    }
 }
