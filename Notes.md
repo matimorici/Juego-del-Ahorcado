@@ -23,9 +23,9 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 | **HU-03** Terminar partida | AC-1: Al completar todas las letras de la palabra se ve "GANASTE". | Ganar la partida (`TerminarPartida.feature`) | `Gano_al_adivinar_todas_las_letras`, `No_gano_si_faltan_letras` | Hecho |
 | **HU-03** Terminar partida | AC-2: Al agotar las 6 vidas se ve "PERDISTE" y la palabra revelada. | Perder la partida (`TerminarPartida.feature`) | `Perdio_al_agotar_las_vidas`, `No_perdio_con_cinco_fallos`, `Palabra_se_revela_al_perder` | Hecho |
 | **HU-03** Terminar partida | AC-3: Con la partida terminada (ganada o perdida) no se aceptan más letras: las vidas no cambian. | Con la partida terminada no se descuentan vidas (`TerminarPartida.feature`) | `Adivinar_con_la_partida_perdida_no_descuenta_vidas`, `Adivinar_con_la_partida_ganada_no_descuenta_vidas` | Hecho |
-| **HU-04** Jugar con tildes y ñ | AC-1: Una letra sin tilde revela la letra con tilde (CANCIÓN + `O` → `_ _ _ _ _ Ó _`) | Una letra sin tilde revela la letra con tilde (`TildesYEnie.feature`) | `Adivinar_letra_sin_tilde_revela_la_letra_con_tilde`, `Gano_con_palabra_con_tilde` | En progreso |
-| **HU-04** Jugar con tildes y ñ | AC-2: La ñ es una letra distinta de la n (NIÑO + `N` → `N _ _ _`). | | | Reservado (Matias) |
-| **HU-04** Jugar con tildes y ñ | AC-3: La ñ se descubre ingresando ñ (NIÑO + `Ñ` → `_ _ Ñ _`). | | | Reservado (Matias) |
+| **HU-04** Jugar con tildes y ñ | AC-1: Una letra sin tilde revela la letra con tilde (CANCIÓN + `O` → `_ _ _ _ _ Ó _`). | Una letra sin tilde revela la letra con tilde (`TildesYEnie.feature`) | `Adivinar_letra_sin_tilde_revela_la_letra_con_tilde`, `Gano_con_palabra_con_tilde` | Hecho |
+| **HU-04** Jugar con tildes y ñ | AC-2: La ñ es una letra distinta de la n (NIÑO + `N` → `N _ _ _`). | La ñ es una letra distinta de la n (`TildesYEnie.feature`) | `Adivinar_n_no_revela_la_enie` | Hecho (regresión, nace verde: la ñ ya funcionaba) |
+| **HU-04** Jugar con tildes y ñ | AC-3: La ñ se descubre ingresando ñ (NIÑO + `Ñ` → `_ _ Ñ _`). | La ñ se descubre ingresando ñ (`TildesYEnie.feature`) | `Adivinar_enie_revela_la_enie` | Hecho (regresión, nace verde: la ñ ya funcionaba) |
 
 ## Decisiones técnicas
 - **Levantar la Web para los AT:** el hook `[BeforeTestRun]` de `WebServerHooks.cs` arranca
