@@ -193,4 +193,11 @@ public class AhorcadoTests
         juego.Adivinar("O");
         Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("_ _ _ _ _ Ó _"));
     }
+    [Test]
+    public void Gano_con_palabra_con_tilde()
+    {
+        var juego = new Ahorcado("CANCIÓN");
+        foreach (var letra in "CANIO") juego.Adivinar(letra.ToString());
+        Assert.That(juego.Gano, Is.True);
+    }
 }
