@@ -22,7 +22,7 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 | **HU-02** Adivinar letras | AC-7: Ingresar más de una letra a la vez no cuesta vidas y avisa (GATO + `AB` → 6 vidas y "Ingresá una sola letra"). | | | Reservado (Rufine) |
 | **HU-03** Terminar partida | AC-1: Al completar todas las letras de la palabra se ve "GANASTE". | Ganar la partida (`TerminarPartida.feature`) | `Gano_al_adivinar_todas_las_letras`, `No_gano_si_faltan_letras` | Hecho |
 | **HU-03** Terminar partida | AC-2: Al agotar las 6 vidas se ve "PERDISTE" y la palabra revelada. | Perder la partida (`TerminarPartida.feature`) | `Perdio_al_agotar_las_vidas`, `No_perdio_con_cinco_fallos`, `Palabra_se_revela_al_perder` | Hecho |
-| **HU-03** Terminar partida | AC-3: Con la partida terminada (ganada o perdida) no se aceptan más letras: las vidas no cambian. | Con la partida terminada no se descuentan vidas (`TerminarPartida.feature`) | | Reservado (Matias) |
+| **HU-03** Terminar partida | AC-3: Con la partida terminada (ganada o perdida) no se aceptan más letras: las vidas no cambian. | Con la partida terminada no se descuentan vidas (`TerminarPartida.feature`) | `Adivinar_con_la_partida_perdida_no_descuenta_vidas`, `Adivinar_con_la_partida_ganada_no_descuenta_vidas` | En progreso |
 
 ## Decisiones técnicas
 - **Levantar la Web para los AT:** el hook `[BeforeTestRun]` de `WebServerHooks.cs` arranca
