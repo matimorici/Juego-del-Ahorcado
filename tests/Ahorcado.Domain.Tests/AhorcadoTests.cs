@@ -177,4 +177,12 @@ public class AhorcadoTests
         juego.Adivinar("Z");
         Assert.That(juego.Vidas, Is.EqualTo(0));
     }
+    [Test]
+    public void Adivinar_con_la_partida_ganada_no_descuenta_vidas()
+    {
+        var juego = new Ahorcado("SOL");
+        foreach (var letra in "SOL") juego.Adivinar(letra.ToString());
+        juego.Adivinar("Z");
+        Assert.That(juego.Vidas, Is.EqualTo(6));
+    }
 }
