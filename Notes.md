@@ -26,6 +26,8 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 | **HU-04** Jugar con tildes y ñ | AC-1: Una letra sin tilde revela la letra con tilde (CANCIÓN + `O` → `_ _ _ _ _ Ó _`). | Una letra sin tilde revela la letra con tilde (`TildesYEnie.feature`) | `Adivinar_letra_sin_tilde_revela_la_letra_con_tilde`, `Gano_con_palabra_con_tilde` | Hecho |
 | **HU-04** Jugar con tildes y ñ | AC-2: La ñ es una letra distinta de la n (NIÑO + `N` → `N _ _ _`). | La ñ es una letra distinta de la n (`TildesYEnie.feature`) | `Adivinar_n_no_revela_la_enie` | Hecho (regresión, nace verde: la ñ ya funcionaba) |
 | **HU-04** Jugar con tildes y ñ | AC-3: La ñ se descubre ingresando ñ (NIÑO + `Ñ` → `_ _ Ñ _`). | La ñ se descubre ingresando ñ (`TildesYEnie.feature`) | `Adivinar_enie_revela_la_enie` | Hecho (regresión, nace verde: la ñ ya funcionaba) |
+| **HU-07** Dibujo del muñeco | AC-1: Cada error muestra una parte más del muñeco, en orden (GATO + `E` + `I` → "Cabeza, Torso"). | Cada error muestra una parte más del muñeco (`Dibujo.feature`) | `Muneco_con_un_error_muestra_la_cabeza`, `Muneco_con_dos_errores_muestra_cabeza_y_torso` | En progreso |
+| **HU-07** Dibujo del muñeco | AC-2: Sin errores no se ve ninguna parte (GATO + `A` → sin partes). | | | Reservado (Matias) |
 
 ## Decisiones técnicas
 
