@@ -200,4 +200,18 @@ public class AhorcadoTests
         foreach (var letra in "CANIO") juego.Adivinar(letra.ToString());
         Assert.That(juego.Gano, Is.True);
     }
+    [Test]
+    public void Adivinar_n_no_revela_la_enie()
+    {
+        var juego = new Ahorcado("NIÑO");
+        juego.Adivinar("N");
+        Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("N _ _ _"));
+    }
+    [Test]
+    public void Adivinar_enie_revela_la_enie()
+    {
+        var juego = new Ahorcado("NIÑO");
+        juego.Adivinar("Ñ");
+        Assert.That(juego.PalabraEnmascarada(), Is.EqualTo("_ _ Ñ _"));
+    }
 }
