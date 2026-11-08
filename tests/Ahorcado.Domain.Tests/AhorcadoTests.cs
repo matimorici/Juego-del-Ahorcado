@@ -168,4 +168,13 @@ public class AhorcadoTests
 
         Assert.That(juego.Vidas, Is.EqualTo(6));
     }
+
+    [Test]
+    public void Adivinar_con_la_partida_perdida_no_descuenta_vidas()
+    {
+        var juego = new Ahorcado("GATO");
+        foreach (var letra in "BCDEFH") juego.Adivinar(letra.ToString());
+        juego.Adivinar("Z");
+        Assert.That(juego.Vidas, Is.EqualTo(0));
+    }
 }
