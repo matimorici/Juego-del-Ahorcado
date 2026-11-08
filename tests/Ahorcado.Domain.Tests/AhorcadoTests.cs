@@ -222,4 +222,12 @@ public class AhorcadoTests
         juego.Adivinar("E");
         Assert.That(juego.PartesDelMuneco, Is.EqualTo(new[] { "Cabeza" }));
     }
+    [Test]
+    public void Muneco_con_dos_errores_muestra_cabeza_y_torso()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("E");
+        juego.Adivinar("I");
+        Assert.That(juego.PartesDelMuneco, Is.EqualTo(new[] { "Cabeza", "Torso" }));
+    }
 }
