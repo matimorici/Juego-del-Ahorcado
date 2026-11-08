@@ -9,6 +9,8 @@ public class Ahorcado
 
     private readonly string _palabra;
     private readonly HashSet<char> _letrasAdivinadas = new();
+    private static readonly string[] Partes =
+        { "Cabeza", "Torso", "Brazo izquierdo", "Brazo derecho", "Pierna izquierda", "Pierna derecha" };
     private int _vidas = VidasIniciales;
 
     public Ahorcado(string palabra) =>
@@ -18,6 +20,8 @@ public class Ahorcado
     public bool Gano => _palabra.All(c => _letrasAdivinadas.Contains(Normalizar(c)));
     public bool Perdio => _vidas <= 0;
     public string LetrasJugadas { get; private set; } = "";
+    public IReadOnlyList<string> PartesDelMuneco =>
+        Partes.Take(VidasIniciales - _vidas).ToList();
     public bool UltimaJugadaRepetida { get; private set; }
 
     public void Adivinar(string letra) {
