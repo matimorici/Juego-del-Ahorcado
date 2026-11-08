@@ -13,6 +13,7 @@ public class IndexModel : PageModel
     public bool Gano { get; private set; }
     public bool Perdio { get; private set; }
     public string Muneco { get; private set; } = "";
+    public IReadOnlyList<string> Partes { get; private set; } = Array.Empty<string>();
 
     public void OnGet()
     {
@@ -40,6 +41,7 @@ public class IndexModel : PageModel
         Gano = juego.Gano;
         Perdio = juego.Perdio;
         LetrasJugadas = juego.LetrasJugadas;
-        Muneco = string.Join(", ", juego.PartesDelMuneco);
+        Partes = juego.PartesDelMuneco;
+        Muneco = string.Join(", ", Partes);
     }
 }
