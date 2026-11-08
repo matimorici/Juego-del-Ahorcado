@@ -18,6 +18,7 @@ public class Ahorcado
     public bool Gano => _palabra.All(c => _letrasAdivinadas.Contains(Normalizar(c)));
     public bool Perdio => _vidas <= 0;
     public string LetrasJugadas { get; private set; } = "";
+    public IReadOnlyList<string> PartesDelMuneco => Array.Empty<string>();
     public bool UltimaJugadaRepetida { get; private set; }
 
     public void Adivinar(string letra) {
