@@ -12,3 +12,9 @@ Característica: Dibujo del muñeco
     Y adivino la letra "I"
     Entonces veo el dibujo "Cabeza, Torso"
     Y veo 4 vidas
+
+  @AC-2
+  Escenario: Sin errores no se ve ninguna parte del dibujo
+    Dado que ingreso con la palabra "GATO"
+    Cuando adivino la letra "A"
+    Entonces no veo partes del dibujo
