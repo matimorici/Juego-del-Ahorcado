@@ -28,6 +28,17 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 | **HU-04** Jugar con tildes y ñ | AC-3: La ñ se descubre ingresando ñ (NIÑO + `Ñ` → `_ _ Ñ _`). | La ñ se descubre ingresando ñ (`TildesYEnie.feature`) | `Adivinar_enie_revela_la_enie` | Hecho (regresión, nace verde: la ñ ya funcionaba) |
 
 ## Decisiones técnicas
-- **Levantar la Web para los AT:** el hook `[BeforeTestRun]` de `WebServerHooks.cs` arranca
-  `Ahorcado.Web` con `dotnet run`, espera un 200 (timeout 60 s) y la mata en `[AfterTestRun]`.
-  Si la web no levanta, la corrida de AT falla (rojo honesto, Guía §6).
+
+**Trazabilidad.** Elegimos la matriz de este archivo más etiquetas de Gherkin (`@HU-XX` en la Característica y `@AC-X` en cada escenario). Una Característica por historia, un escenario por criterio. La matriz es la vista para leer la cadena Historia → criterio → escenario → UT y ver si una historia está terminada (todos sus escenarios en verde). Las etiquetas permiten correr una historia sola (`dotnet test --filter Category=HU-02`). Descartamos los issues del tablero para las historias: tener el estado en dos lugares permite que se contradigan. Los UTs se enlazan por nombre en la matriz: la traza baja hasta el UT sin etiquetar el dominio, que no sabe nada de historias.
+
+**Dónde vive la partida.** El estado no se guarda en el servidor. El formulario lleva las letras ya jugadas en un campo oculto (`played`) y en cada pedido la página crea un `Ahorcado` nuevo y le reaplica esas letras más la nueva. Así el dominio sigue puro (sin HTTP ni sesión) y los AT son deterministas con `?word=GATO`. Límite conocido: la partida viaja en la URL. Si hicieran falta "jugar de nuevo" con marcador, habría que pasar a sesión.
+
+**Reglas en el dominio, no en la pantalla.** `Gano`, `Perdio`, `UltimaJugadaRepetida` y la palabra por defecto son del dominio; la página solo pregunta y muestra el mensaje.
+
+**Tildes y ñ.** La normalización usa una tabla explícita (`ÁÉÍÓÚÜ` → `AEIOUU`) en lugar de `string.Normalize`: no depende del soporte Unicode del servidor y la `Ñ` queda fuera por construcción, porque para Unicode la `Ñ` es una `N` con una marca encima y se convertiría en `N`. Los escenarios de la ñ (HU-04 AC-2 y AC-3) son de regresión: nacen en verde a propósito, porque la ñ ya funcionaba, y protegen ese comportamiento.
+
+**Pipeline.** `build → unit-tests (cobertura ≥ 90 % sobre el dominio) → sonar (quality gate bloqueante) → acceptance-tests → deploy`, encadenados con `needs`. El deploy dispara un hook de Render (con el auto-deploy apagado) y espera a que la URL responda con el juego. Corre en push a `main` y en pull requests; el deploy solo en `main`. El gate bloquea tanto en los pull requests como en `main`. El plan gratuito de SonarQube Cloud no deja consultar el estado del gate en ramas sueltas (da error si se analiza un push a una rama de trabajo), por eso el pipeline corre solo en push a `main` y en pull requests, que es donde el gate se puede consultar.
+
+**Levantar la Web para los AT.** El hook `[BeforeTestRun]` de `WebServerHooks.cs` arranca `Ahorcado.Web` con `dotnet run`, espera un 200 (timeout 60 s) y la mata en `[AfterTestRun]`. Si la web no levanta, la corrida de AT falla (rojo honesto, Guía §6).
+
+**Cosas que pasaron y cómo las resolvimos.** El primer `GREEN:` de HU-01 AC-2 entró sin su `RED:` y se rehízo el ciclo (queda duplicado en el historial; no se reescribió). Dos criterios abiertos en paralelo con el mismo número se renumeraron, y desde entonces los números se reservan en esta matriz antes de abrir un AT.
