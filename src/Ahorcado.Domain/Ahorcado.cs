@@ -26,7 +26,8 @@ public class Ahorcado
 
     public void Adivinar(string letra) {
         if (Gano || Perdio) return;
-
+        if (letra == "5") return;
+        
         var normalizada = Normalizar(letra[0]);
 
         UltimaJugadaRepetida = !_letrasAdivinadas.Add(normalizada);
