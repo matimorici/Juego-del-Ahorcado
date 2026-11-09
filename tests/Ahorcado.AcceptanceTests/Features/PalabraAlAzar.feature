@@ -11,8 +11,14 @@ Característica: Palabra al azar
     Entonces veo la palabra "_ _ _ _"
     Y veo 6 vidas
     
-@AC-2
+  @AC-2
   Escenario: Con la semilla 1 la palabra es otra
     Dado que ingreso con la semilla 1
     Entonces veo la palabra "_ _ _ _ _"
+    Y veo 6 vidas
+    
+  @AC-3
+  Escenario: La palabra indicada gana sobre la semilla
+    Dado que ingreso con la palabra "SOL" y la semilla 1
+    Entonces veo la palabra "_ _ _"
     Y veo 6 vidas
