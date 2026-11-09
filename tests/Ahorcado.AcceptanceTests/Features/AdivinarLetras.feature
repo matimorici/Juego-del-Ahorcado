@@ -48,4 +48,12 @@ Característica: Adivinar letras
     Cuando adivino la letra "5"
     Entonces veo 6 vidas
     Y veo la palabra "_ _ _ _"
-    Y veo el mensaje "Ingresá una sola letra"   
+    Y veo el mensaje "Ingresá una sola letra"  
+     
+  @AC-7
+  Escenario: Ingresar más de una letra a la vez no cuesta vidas y avisa
+    Dado que ingreso con la palabra "GATO"
+    Cuando adivino la letra "AB"
+    Entonces veo 6 vidas
+    Y veo la palabra "_ _ _ _"
+    Y veo el mensaje "Ingresá una sola letra"
