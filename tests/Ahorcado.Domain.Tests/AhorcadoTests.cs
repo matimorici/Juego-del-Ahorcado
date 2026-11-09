@@ -252,4 +252,13 @@ public class AhorcadoTests
         juego.Adivinar("#");
         Assert.That(juego.UltimaJugadaInvalida, Is.True);
     }
+    [Test]
+    public void Entrada_invalida_despues_de_una_repetida_no_queda_como_repetida()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("E");
+        juego.Adivinar("E");
+        juego.Adivinar("5");
+        Assert.That(juego.UltimaJugadaRepetida, Is.False);
+    }
 }
