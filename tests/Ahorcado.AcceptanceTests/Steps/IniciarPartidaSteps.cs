@@ -6,7 +6,6 @@ using System.Text.RegularExpressions;
 [Binding]
 public class IniciarPartidaSteps
 {
-    private const string BaseUrl = "http://localhost:5020";
     private readonly IPage _page;
 
     public IniciarPartidaSteps(IPage page) => _page = page;
@@ -34,10 +33,6 @@ public class IniciarPartidaSteps
     [Given(@"que ingreso sin indicar una palabra")]
     public async Task DadoQueIngresoSinIndicarUnaPalabra()
         => await _page.GotoAsync(WebServerHooks.BaseUrl);
-
-    [Given(@"que ingreso con la semilla (\d+)")]
-    public async Task DadoQueIngresoConLaSemilla(int semilla)
-        => await _page.GotoAsync($"{BaseUrl}/?seed={semilla}");
     
     [Then(@"veo una palabra oculta")]
     public async Task EntoncesVeoUnaPalabraOculta()
@@ -47,7 +42,12 @@ public class IniciarPartidaSteps
     public async Task EntoncesVeoElMensaje(string esperado)
         => await Expect(_page.GetByTestId("message")).ToHaveTextAsync(esperado);
     
+    [Given(@"que ingreso con la semilla (\d+)")]
+    public async Task DadoQueIngresoConLaSemilla(int semilla)
+        => await _page.GotoAsync($"{WebServerHooks.BaseUrl}/?seed={semilla}");
+    
     [Given(@"que ingreso con la palabra ""(.*)"" y la semilla (\d+)")]
     public async Task DadoQueIngresoConLaPalabraYLaSemilla(string palabra, int semilla)
-        => await _page.GotoAsync($"{BaseUrl}/?word={palabra}&seed={semilla}");
+        => await _page.GotoAsync($"{WebServerHooks.BaseUrl}/?word={palabra}&seed={semilla}");
+
 }
