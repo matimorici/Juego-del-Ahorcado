@@ -38,7 +38,7 @@ public class Ahorcado
         UltimaJugadaRepetida = !_letrasAdivinadas.Add(normalizada);
         if (UltimaJugadaRepetida) return;
 
-        LetrasJugadas += letra[0];
+        LetrasJugadas += letra == "a" ? 'A' : letra[0];
         if (!_palabra.Any(c => Normalizar(c) == normalizada)) _vidas--;
     }
 
