@@ -276,4 +276,11 @@ public class AhorcadoTests
         juego.Adivinar("EX");
         Assert.That(juego.UltimaJugadaInvalida, Is.True);
     }
+    [Test]
+    public void Otra_entrada_de_mas_de_una_letra_tambien_queda_informada()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("XYZ");
+        Assert.That(juego.UltimaJugadaInvalida, Is.True);
+    }
 }
