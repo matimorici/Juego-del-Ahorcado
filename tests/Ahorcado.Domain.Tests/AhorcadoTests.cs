@@ -298,4 +298,11 @@ public class AhorcadoTests
         juego.Adivinar("a");
         Assert.That(juego.LetrasJugadas, Is.EqualTo("A"));
     }
+    [Test]
+    public void Letras_jugadas_registra_la_letra_sin_tilde()
+    {
+        var juego = new Ahorcado("CANCIÓN");
+        juego.Adivinar("ó");
+        Assert.That(juego.LetrasJugadas, Is.EqualTo("O"));
+    }
 }
