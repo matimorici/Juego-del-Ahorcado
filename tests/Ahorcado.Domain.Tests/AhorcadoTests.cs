@@ -305,4 +305,11 @@ public class AhorcadoTests
         juego.Adivinar("ó");
         Assert.That(juego.LetrasJugadas, Is.EqualTo("O"));
     }
+    [Test]
+    public void Letras_jugadas_conserva_la_enie()
+    {
+        var juego = new Ahorcado("NIÑO");
+        juego.Adivinar("ñ");
+        Assert.That(juego.LetrasJugadas, Is.EqualTo("Ñ"));
+    }
 }
