@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 [Binding]
 public class IniciarPartidaSteps
 {
+    private const string BaseUrl = "http://localhost:5020";
     private readonly IPage _page;
 
     public IniciarPartidaSteps(IPage page) => _page = page;
@@ -13,7 +14,7 @@ public class IniciarPartidaSteps
     [Given(@"que ingreso con la palabra ""(.*)""")]
     public async Task DadoQueIngresoConLaPalabra(string palabra)
         => await _page.GotoAsync($"{WebServerHooks.BaseUrl}/?word={palabra}");
-
+    
     [Then(@"veo la palabra ""(.*)""")]
     public async Task EntoncesVeoLaPalabra(string esperada)
         => await Expect(_page.GetByTestId("word")).ToHaveTextAsync(esperada);
@@ -34,6 +35,10 @@ public class IniciarPartidaSteps
     public async Task DadoQueIngresoSinIndicarUnaPalabra()
         => await _page.GotoAsync(WebServerHooks.BaseUrl);
 
+    [Given(@"que ingreso con la semilla (\d+)")]
+    public async Task DadoQueIngresoConLaSemilla(int semilla)
+        => await _page.GotoAsync($"{BaseUrl}/?seed={semilla}");
+    
     [Then(@"veo una palabra oculta")]
     public async Task EntoncesVeoUnaPalabraOculta()
         => await Expect(_page.GetByTestId("word")).ToHaveTextAsync(new Regex(@"^_( _)*$"));
