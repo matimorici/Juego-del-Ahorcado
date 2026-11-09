@@ -290,4 +290,26 @@ public class AhorcadoTests
         juego.Adivinar("");
         Assert.That(juego.UltimaJugadaInvalida, Is.True);
     }
+    
+    [Test]
+    public void Letras_jugadas_registra_la_letra_en_mayuscula()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("a");
+        Assert.That(juego.LetrasJugadas, Is.EqualTo("A"));
+    }
+    [Test]
+    public void Letras_jugadas_registra_la_letra_sin_tilde()
+    {
+        var juego = new Ahorcado("CANCIÓN");
+        juego.Adivinar("ó");
+        Assert.That(juego.LetrasJugadas, Is.EqualTo("O"));
+    }
+    [Test]
+    public void Letras_jugadas_conserva_la_enie()
+    {
+        var juego = new Ahorcado("NIÑO");
+        juego.Adivinar("ñ");
+        Assert.That(juego.LetrasJugadas, Is.EqualTo("Ñ"));
+    }
 }
