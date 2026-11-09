@@ -23,7 +23,8 @@ public class Ahorcado
     public IReadOnlyList<string> PartesDelMuneco =>
         Partes.Take(VidasIniciales - _vidas).ToList();
     public bool UltimaJugadaRepetida { get; private set; }
-
+    public bool UltimaJugadaInvalida { get; private set; }
+    
     public void Adivinar(string letra) {
         if (Gano || Perdio) return;
         if (letra == "5") return;
