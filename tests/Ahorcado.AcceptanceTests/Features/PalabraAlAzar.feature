@@ -10,3 +10,9 @@ Característica: Palabra al azar
     Dado que ingreso con la semilla 0
     Entonces veo la palabra "_ _ _ _"
     Y veo 6 vidas
+    
+@AC-2
+  Escenario: Con la semilla 1 la palabra es otra
+    Dado que ingreso con la semilla 1
+    Entonces veo la palabra "_ _ _ _ _"
+    Y veo 6 vidas
