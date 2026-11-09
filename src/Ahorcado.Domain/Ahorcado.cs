@@ -27,7 +27,7 @@ public class Ahorcado
     
     public void Adivinar(string letra) {
         if (Gano || Perdio) return;
-        UltimaJugadaInvalida = letra == "5";
+        UltimaJugadaInvalida = !char.IsLetter(letra[0]);
         if (UltimaJugadaInvalida) return;
         
         var normalizada = Normalizar(letra[0]);
