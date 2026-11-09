@@ -34,9 +34,18 @@ Característica: Adivinar letras
     Y adivino la letra "E"
     Entonces veo 5 vidas
     Y veo el mensaje "Ya probaste la letra E"
+    
   @AC-5
   Escenario: Mayúsculas y minúsculas se tratan igual
     Dado que ingreso con la palabra "GATO"
     Cuando adivino la letra "a"
     Entonces veo la palabra "_ A _ _"
     Y veo 6 vidas
+    
+  @AC-6
+  Escenario: Ingresar algo que no es una letra no cuesta vidas y avisa
+    Dado que ingreso con la palabra "GATO"
+    Cuando adivino la letra "5"
+    Entonces veo 6 vidas
+    Y veo la palabra "_ _ _ _"
+    Y veo el mensaje "Ingresá una sola letra"   

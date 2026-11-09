@@ -23,10 +23,18 @@ public class Ahorcado
     public IReadOnlyList<string> PartesDelMuneco =>
         Partes.Take(VidasIniciales - _vidas).ToList();
     public bool UltimaJugadaRepetida { get; private set; }
-
+    public bool UltimaJugadaInvalida { get; private set; }
+    
     public void Adivinar(string letra) {
         if (Gano || Perdio) return;
-
+        UltimaJugadaInvalida = !char.IsLetter(letra[0]);
+        UltimaJugadaInvalida = !char.IsLetter(letra[0]);
+        if (UltimaJugadaInvalida)
+        {
+            UltimaJugadaRepetida = false;
+            return;
+        }
+        
         var normalizada = Normalizar(letra[0]);
 
         UltimaJugadaRepetida = !_letrasAdivinadas.Add(normalizada);

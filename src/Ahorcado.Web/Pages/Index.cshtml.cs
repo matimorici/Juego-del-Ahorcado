@@ -34,8 +34,12 @@ public class IndexModel : PageModel
             {
                 Mensaje = $"Ya probaste la letra {letra}";
             }
+            else if (juego.UltimaJugadaInvalida)
+            {
+                Mensaje = "Ingresá una sola letra";
+            }
         }
-
+        
         PalabraEnmascarada = juego.PalabraEnmascarada();
         Vidas = juego.Vidas;
         Gano = juego.Gano;

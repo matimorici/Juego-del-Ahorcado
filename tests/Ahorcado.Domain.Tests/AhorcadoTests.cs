@@ -230,4 +230,35 @@ public class AhorcadoTests
         juego.Adivinar("I");
         Assert.That(juego.PartesDelMuneco, Is.EqualTo(new[] { "Cabeza", "Torso" }));
     }
+    
+    [Test]
+    public void Entrada_que_no_es_letra_no_descuenta_vida()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("5");
+        Assert.That(juego.Vidas, Is.EqualTo(6));
+    }
+    [Test]
+    public void Entrada_que_no_es_letra_queda_informada()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("5");
+        Assert.That(juego.UltimaJugadaInvalida, Is.True);
+    }
+    [Test]
+    public void Un_simbolo_tambien_queda_informado_como_entrada_invalida()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("#");
+        Assert.That(juego.UltimaJugadaInvalida, Is.True);
+    }
+    [Test]
+    public void Entrada_invalida_despues_de_una_repetida_no_queda_como_repetida()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("E");
+        juego.Adivinar("E");
+        juego.Adivinar("5");
+        Assert.That(juego.UltimaJugadaRepetida, Is.False);
+    }
 }
