@@ -46,4 +46,8 @@ public class IniciarPartidaSteps
     [Then(@"veo el mensaje ""(.*)""")]
     public async Task EntoncesVeoElMensaje(string esperado)
         => await Expect(_page.GetByTestId("message")).ToHaveTextAsync(esperado);
+    
+    [Given(@"que ingreso con la palabra ""(.*)"" y la semilla (\d+)")]
+    public async Task DadoQueIngresoConLaPalabraYLaSemilla(string palabra, int semilla)
+        => await _page.GotoAsync($"{BaseUrl}/?word={palabra}&seed={semilla}");
 }
