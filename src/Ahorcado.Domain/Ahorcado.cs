@@ -27,9 +27,7 @@ public class Ahorcado
     
     public void Adivinar(string letra) {
         if (Gano || Perdio) return;
-        UltimaJugadaInvalida = !char.IsLetter(letra[0]);
-        UltimaJugadaInvalida = !char.IsLetter(letra[0]);
-        if (UltimaJugadaInvalida)
+        UltimaJugadaInvalida = letra.Length != 1 || !char.IsLetter(letra[0]);        if (UltimaJugadaInvalida)
         {
             UltimaJugadaRepetida = false;
             return;
