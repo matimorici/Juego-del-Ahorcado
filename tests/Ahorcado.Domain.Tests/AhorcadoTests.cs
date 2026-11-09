@@ -238,12 +238,18 @@ public class AhorcadoTests
         juego.Adivinar("5");
         Assert.That(juego.Vidas, Is.EqualTo(6));
     }
-    
     [Test]
     public void Entrada_que_no_es_letra_queda_informada()
     {
         var juego = new Ahorcado("GATO");
         juego.Adivinar("5");
+        Assert.That(juego.UltimaJugadaInvalida, Is.True);
+    }
+    [Test]
+    public void Un_simbolo_tambien_queda_informado_como_entrada_invalida()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("#");
         Assert.That(juego.UltimaJugadaInvalida, Is.True);
     }
 }
