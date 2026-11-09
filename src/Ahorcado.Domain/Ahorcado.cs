@@ -28,7 +28,12 @@ public class Ahorcado
     public void Adivinar(string letra) {
         if (Gano || Perdio) return;
         UltimaJugadaInvalida = !char.IsLetter(letra[0]);
-        if (UltimaJugadaInvalida) return;
+        UltimaJugadaInvalida = !char.IsLetter(letra[0]);
+        if (UltimaJugadaInvalida)
+        {
+            UltimaJugadaRepetida = false;
+            return;
+        }
         
         var normalizada = Normalizar(letra[0]);
 
