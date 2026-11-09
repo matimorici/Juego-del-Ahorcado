@@ -1,3 +1,4 @@
+using Ahorcado.Domain;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Juego = Ahorcado.Domain.Ahorcado;
 
@@ -18,6 +19,12 @@ public class IndexModel : PageModel
     public void OnGet()
     {
         Palabra = Request.Query["word"].ToString();
+        if (Palabra.Length == 0)
+        {
+            Palabra = int.TryParse(Request.Query["seed"], out var semilla)
+                ? BancoDePalabras.Elegir(semilla)
+                : BancoDePalabras.Elegir(Random.Shared.Next());
+        }
         var jugadas = Request.Query["played"].ToString();
         var letra = Request.Query["letter"].ToString();
 
