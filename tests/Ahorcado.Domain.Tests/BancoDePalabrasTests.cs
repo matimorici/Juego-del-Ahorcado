@@ -12,5 +12,10 @@ public class BancoDePalabrasTests
     {
         Assert.That(BancoDePalabras.Elegir(1), Is.EqualTo("PERRO"));
     }
+    [Test]
+    public void Semilla_dos_elige_mariposa()
+    {
+        Assert.That(BancoDePalabras.Elegir(2), Is.EqualTo("MARIPOSA"));
+    }
     
 }
