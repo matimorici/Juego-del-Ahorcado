@@ -17,5 +17,9 @@ public class BancoDePalabrasTests
     {
         Assert.That(BancoDePalabras.Elegir(2), Is.EqualTo("MARIPOSA"));
     }
-    
+    [Test]
+    public void Semilla_mayor_a_la_cantidad_de_palabras_da_la_vuelta()
+    {
+        Assert.That(BancoDePalabras.Elegir(6), Is.EqualTo("GATO"));
+    }
 }
