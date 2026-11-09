@@ -283,4 +283,11 @@ public class AhorcadoTests
         juego.Adivinar("XYZ");
         Assert.That(juego.UltimaJugadaInvalida, Is.True);
     }
+    [Test]
+    public void Cadena_vacia_queda_informada_sin_romper()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("");
+        Assert.That(juego.UltimaJugadaInvalida, Is.True);
+    }
 }
