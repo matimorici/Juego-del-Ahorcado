@@ -230,4 +230,12 @@ public class AhorcadoTests
         juego.Adivinar("I");
         Assert.That(juego.PartesDelMuneco, Is.EqualTo(new[] { "Cabeza", "Torso" }));
     }
+    
+    [Test]
+    public void Entrada_que_no_es_letra_no_descuenta_vida()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("5");
+        Assert.That(juego.Vidas, Is.EqualTo(6));
+    }
 }
