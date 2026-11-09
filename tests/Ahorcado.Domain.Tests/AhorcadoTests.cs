@@ -261,4 +261,12 @@ public class AhorcadoTests
         juego.Adivinar("5");
         Assert.That(juego.UltimaJugadaRepetida, Is.False);
     }
+    
+    [Test]
+    public void Entrada_de_mas_de_una_letra_no_descuenta_vida()
+    {
+        var juego = new Ahorcado("GATO");
+        juego.Adivinar("EX");
+        Assert.That(juego.Vidas, Is.EqualTo(6));
+    }
 }
