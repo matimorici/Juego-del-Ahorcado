@@ -22,4 +22,9 @@ public class BancoDePalabrasTests
     {
         Assert.That(BancoDePalabras.Elegir(6), Is.EqualTo("GATO"));
     }
+    [Test]
+    public void Semilla_negativa_elige_una_palabra_del_banco()
+    {
+        Assert.That(BancoDePalabras.Elegir(-1), Is.EqualTo("ELEFANTE"));
+    }
 }
