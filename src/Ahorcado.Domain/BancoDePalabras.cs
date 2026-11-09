@@ -2,5 +2,8 @@ namespace Ahorcado.Domain;
 
 public static class BancoDePalabras
 {
-    public static string Elegir(int semilla) => semilla == 0 ? "GATO" : "PERRO";
+    private static readonly string[] Palabras =
+        { "GATO", "PERRO", "MARIPOSA", "CANCIÓN", "NIÑO", "ELEFANTE" };
+
+    public static string Elegir(int semilla) => Palabras[semilla % Palabras.Length];
 }
