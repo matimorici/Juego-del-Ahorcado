@@ -25,3 +25,10 @@ Característica: Dificultad
   Escenario: Con un nivel desconocido se empieza con 6 vidas
     Dado que ingreso con la palabra "GATO" y el nivel xyz
     Entonces veo 6 vidas
+    
+  @AC-4
+  Escenario: El nivel se mantiene al jugar y el dibujo cuenta errores
+    Dado que ingreso con la palabra "GATO" y el nivel dificil
+    Cuando adivino la letra "E"
+    Entonces veo 3 vidas
+    Y veo el dibujo "Cabeza"
