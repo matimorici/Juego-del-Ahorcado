@@ -7,4 +7,9 @@ public class DificultadTests
     {
         Assert.That(Dificultad.Vidas("dificil"), Is.EqualTo(4));
     }
+    [Test]
+    public void Nivel_desconocido_tiene_seis_vidas()
+    {
+        Assert.That(Dificultad.Vidas("xyz"), Is.EqualTo(6));
+    }
 }
