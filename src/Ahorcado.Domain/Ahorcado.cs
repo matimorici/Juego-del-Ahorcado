@@ -15,7 +15,8 @@ public class Ahorcado
 
     public Ahorcado(string palabra) =>
         _palabra = string.IsNullOrEmpty(palabra) ? PalabraPorDefecto : palabra;
-
+    public Ahorcado(string palabra, int vidasIniciales) : this(palabra) { }
+    
     public int Vidas => _vidas;
     public bool Gano => _palabra.All(c => _letrasAdivinadas.Contains(Normalizar(c)));
     public bool Perdio => _vidas <= 0;

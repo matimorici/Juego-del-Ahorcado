@@ -312,4 +312,10 @@ public class AhorcadoTests
         juego.Adivinar("ñ");
         Assert.That(juego.LetrasJugadas, Is.EqualTo("Ñ"));
     }
+    [Test]
+    public void Partida_con_cuatro_vidas_iniciales_empieza_con_cuatro_vidas()
+    {
+        var juego = new Ahorcado("GATO", 4);
+        Assert.That(juego.Vidas, Is.EqualTo(4));
+    }
 }
