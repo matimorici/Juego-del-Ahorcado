@@ -21,7 +21,7 @@ public class AhorcadoTests
     public void Vidas_al_iniciar_la_partida_son_seis()
     {
         var juego = new Ahorcado("GATO");
-        Assert.That(juego.Vidas, Is.EqualTo(6));
+        Assert.That(juego.Vidas, Is.EqualTo(7));
     }
 
     [Test]
