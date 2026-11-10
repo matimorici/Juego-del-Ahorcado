@@ -49,5 +49,9 @@ public class IniciarPartidaSteps
     [Given(@"que ingreso con la palabra ""(.*)"" y la semilla (\d+)")]
     public async Task DadoQueIngresoConLaPalabraYLaSemilla(string palabra, int semilla)
         => await _page.GotoAsync($"{WebServerHooks.BaseUrl}/?word={palabra}&seed={semilla}");
-
+    
+    [Given(@"que ingreso con la palabra ""(.*)"" y el nivel (\w+)")]
+    public async Task DadoQueIngresoConLaPalabraYElNivel(string palabra, string nivel)
+        => await _page.GotoAsync($"{WebServerHooks.BaseUrl}/?word={palabra}&level={nivel}");
+    
 }
