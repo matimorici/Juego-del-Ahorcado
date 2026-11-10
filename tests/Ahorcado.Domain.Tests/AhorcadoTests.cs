@@ -324,4 +324,19 @@ public class AhorcadoTests
         var juego = new Ahorcado("GATO", 5);
         Assert.That(juego.Vidas, Is.EqualTo(5));
     }
+    
+    [Test]
+    public void Muneco_con_un_error_en_partida_de_cuatro_vidas_muestra_la_cabeza()
+    {
+        var juego = new Ahorcado("GATO", 4);
+        juego.Adivinar("E");
+        Assert.That(juego.PartesDelMuneco, Is.EqualTo(new[] { "Cabeza" }));
+    }
+    [Test]
+    public void Muneco_con_un_error_en_partida_de_ocho_vidas_muestra_la_cabeza()
+    {
+        var juego = new Ahorcado("GATO", 8);
+        juego.Adivinar("E");
+        Assert.That(juego.PartesDelMuneco, Is.EqualTo(new[] { "Cabeza" }));
+    }
 }
