@@ -15,7 +15,7 @@ public class IndexModel : PageModel
     public bool Perdio { get; private set; }
     public string Muneco { get; private set; } = "";
     public IReadOnlyList<string> Partes { get; private set; } = Array.Empty<string>();
-
+    public string Nivel { get; private set; } = "";
     public void OnGet()
     {
         Palabra = Request.Query["word"].ToString();
@@ -28,7 +28,9 @@ public class IndexModel : PageModel
         var jugadas = Request.Query["played"].ToString();
         var letra = Request.Query["letter"].ToString();
 
-        var juego = new Juego(Palabra);
+        Nivel = Request.Query["level"].ToString();
+        var juego = new Juego(Palabra, Dificultad.Vidas(Nivel));
+        
         foreach (var anterior in jugadas)
         {
             juego.Adivinar(anterior.ToString());
