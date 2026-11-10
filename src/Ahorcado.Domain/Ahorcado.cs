@@ -21,7 +21,7 @@ public class Ahorcado
     public bool Perdio => _vidas <= 0;
     public string LetrasJugadas { get; private set; } = "";
     public IReadOnlyList<string> PartesDelMuneco =>
-        Partes.Take(VidasIniciales - _vidas).ToList();
+        Partes.Take(_vidas == 3 ? 1 : VidasIniciales - _vidas).ToList();
     public bool UltimaJugadaRepetida { get; private set; }
     public bool UltimaJugadaInvalida { get; private set; }
     
