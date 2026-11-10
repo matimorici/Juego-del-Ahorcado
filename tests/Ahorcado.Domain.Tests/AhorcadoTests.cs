@@ -318,4 +318,10 @@ public class AhorcadoTests
         var juego = new Ahorcado("GATO", 4);
         Assert.That(juego.Vidas, Is.EqualTo(4));
     }
+    [Test]
+    public void Partida_con_cinco_vidas_iniciales_empieza_con_cinco_vidas()
+    {
+        var juego = new Ahorcado("GATO", 5);
+        Assert.That(juego.Vidas, Is.EqualTo(5));
+    }
 }
