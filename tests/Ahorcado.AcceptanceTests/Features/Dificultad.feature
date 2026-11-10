@@ -15,3 +15,13 @@ Característica: Dificultad
   Escenario: Con nivel fácil se empieza con 8 vidas
     Dado que ingreso con la palabra "GATO" y el nivel facil
     Entonces veo 8 vidas
+
+  @AC-3
+  Escenario: Sin nivel se empieza con 6 vidas
+    Dado que ingreso con la palabra "GATO"
+    Entonces veo 6 vidas
+
+  @AC-3
+  Escenario: Con un nivel desconocido se empieza con 6 vidas
+    Dado que ingreso con la palabra "GATO" y el nivel xyz
+    Entonces veo 6 vidas

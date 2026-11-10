@@ -18,4 +18,10 @@ public class DificultadTests
     {
         Assert.That(Dificultad.Vidas("facil"), Is.EqualTo(8));
     }
+    
+    [Test]
+    public void Nivel_vacio_tiene_seis_vidas()
+    {
+        Assert.That(Dificultad.Vidas(""), Is.EqualTo(6));
+    }
 }
