@@ -10,3 +10,8 @@ Característica: Dificultad
     Dado que ingreso con la palabra "GATO" y el nivel dificil
     Entonces veo 4 vidas
     Y veo la palabra "_ _ _ _"
+  
+  @AC-2
+  Escenario: Con nivel fácil se empieza con 8 vidas
+    Dado que ingreso con la palabra "GATO" y el nivel facil
+    Entonces veo 8 vidas
