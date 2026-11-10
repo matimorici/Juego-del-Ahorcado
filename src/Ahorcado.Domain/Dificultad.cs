@@ -2,5 +2,6 @@ namespace Ahorcado.Domain;
 
 public static class Dificultad
 {
-    public static int Vidas(string nivel) => 6;
+    public static int Vidas(string nivel) => nivel == "dificil" ? 4 : 6;
+    
 }
