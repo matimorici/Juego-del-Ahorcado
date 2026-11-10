@@ -30,7 +30,7 @@ jobs:
           dotnet test tests/Ahorcado.Domain.Tests --configuration Release
           /p:CollectCoverage=true
           /p:Include="[Ahorcado.Domain]*"
-          /p:Threshold=90
+          /p:Threshold=100
           /p:ThresholdType=line
           /p:CoverletOutputFormat=cobertura
 
