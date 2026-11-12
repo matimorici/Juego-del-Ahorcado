@@ -11,6 +11,7 @@ public class Ahorcado
     private readonly HashSet<char> _letrasAdivinadas = new();
     private static readonly string[] Partes =
         { "Cabeza", "Torso", "Brazo izquierdo", "Brazo derecho", "Pierna izquierda", "Pierna derecha" };
+    private static readonly string[] PartesDificil = { "Cabeza", "Torso", "Brazos", "Piernas" };
     private int _vidas = VidasIniciales;
     private int _vidasIniciales = VidasIniciales;
     public Ahorcado(string palabra) =>
@@ -24,7 +25,7 @@ public class Ahorcado
     public bool Perdio => _vidas <= 0;
     public string LetrasJugadas { get; private set; } = "";
     public IReadOnlyList<string> PartesDelMuneco =>
-        Partes.Take(_vidasIniciales - _vidas).ToList();
+        (_vidasIniciales == 4 ? PartesDificil : Partes).Take(_vidasIniciales - _vidas).ToArray();
     public bool UltimaJugadaRepetida { get; private set; }
     public bool UltimaJugadaInvalida { get; private set; }
     
