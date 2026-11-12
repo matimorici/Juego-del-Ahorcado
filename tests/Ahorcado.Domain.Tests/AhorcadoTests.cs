@@ -346,4 +346,11 @@ public class AhorcadoTests
         foreach (var letra in "EIU") juego.Adivinar(letra.ToString());
         Assert.That(juego.PartesDelMuneco, Is.EqualTo(new[] { "Cabeza", "Torso", "Brazos" }));
     }
+    [Test]
+    public void Muneco_en_facil_con_dos_errores_muestra_cabeza_y_ojos()
+    {
+        var juego = new Ahorcado("GATO", 8);
+        foreach (var letra in "EI") juego.Adivinar(letra.ToString());
+        Assert.That(juego.PartesDelMuneco, Is.EqualTo(new[] { "Cabeza", "Ojos" }));
+    }
 }
