@@ -9,44 +9,53 @@ public class Ahorcado
 
     private readonly string _palabra;
     private readonly HashSet<char> _letrasAdivinadas = new();
+
     private static readonly string[] Partes =
         { "Cabeza", "Torso", "Brazo izquierdo", "Brazo derecho", "Pierna izquierda", "Pierna derecha" };
-    private static readonly string[] PartesDificil =
-        { "Cabeza", "Torso", "Brazos", "Piernas" };
+
+    private static readonly string[] PartesDificil = { "Cabeza", "Torso", "Brazos", "Piernas" };
+
     private static readonly string[] PartesFacil =
         { "Cabeza", "Ojos", "Boca", "Torso", "Brazo izquierdo", "Brazo derecho", "Pierna izquierda", "Pierna derecha" };
+
     private int _vidas = VidasIniciales;
     private int _vidasIniciales = VidasIniciales;
+
     public Ahorcado(string palabra) =>
         _palabra = string.IsNullOrEmpty(palabra) ? PalabraPorDefecto : palabra;
+
     public Ahorcado(string palabra, int vidasIniciales) : this(palabra)
     {
         _vidas = vidasIniciales;
         _vidasIniciales = vidasIniciales;
-    }    public int Vidas => _vidas;
+    }
+
+    public int Vidas => _vidas;
+
     public bool Gano => _palabra.All(c => _letrasAdivinadas.Contains(Normalizar(c)));
+
     public bool Perdio => _vidas <= 0;
+
     public string LetrasJugadas { get; private set; } = "";
+
     public IReadOnlyList<string> PartesDelMuneco =>
         SecuenciaDePartes().Take(_vidasIniciales - _vidas).ToArray();
 
-    private string[] SecuenciaDePartes() => _vidasIniciales switch
-    {
-        4 => PartesDificil,
-        8 => PartesFacil,
-        _ => Partes
-    };
     public bool UltimaJugadaRepetida { get; private set; }
+
     public bool UltimaJugadaInvalida { get; private set; }
-    
-    public void Adivinar(string letra) {
+
+    public void Adivinar(string letra)
+    {
         if (Gano || Perdio) return;
-        UltimaJugadaInvalida = letra.Length != 1 || !char.IsLetter(letra[0]);        if (UltimaJugadaInvalida)
+
+        UltimaJugadaInvalida = letra.Length != 1 || !char.IsLetter(letra[0]);
+        if (UltimaJugadaInvalida)
         {
             UltimaJugadaRepetida = false;
             return;
         }
-        
+
         var normalizada = Normalizar(letra[0]);
 
         UltimaJugadaRepetida = !_letrasAdivinadas.Add(normalizada);
@@ -59,7 +68,15 @@ public class Ahorcado
     public string PalabraEnmascarada() =>
         string.Join(" ", _palabra.Select(c => Perdio || _letrasAdivinadas.Contains(Normalizar(c)) ? c.ToString() : "_"));
 
-    private static char Normalizar(char c) {
+    private string[] SecuenciaDePartes() => _vidasIniciales switch
+    {
+        4 => PartesDificil,
+        8 => PartesFacil,
+        _ => Partes
+    };
+
+    private static char Normalizar(char c)
+    {
         var mayuscula = char.ToUpperInvariant(c);
         var posicion = ConTilde.IndexOf(mayuscula);
         return posicion >= 0 ? SinTilde[posicion] : mayuscula;
