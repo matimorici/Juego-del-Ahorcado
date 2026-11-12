@@ -23,19 +23,19 @@
         {
             <line x1="85" y1="54" x2="85" y2="95" stroke="currentColor" stroke-width="3" />
         }
-        @if (Model.Partes.Contains("Brazo izquierdo"))
+        @if (Model.Partes.Contains("Brazo izquierdo") || Model.Partes.Contains("Brazos"))
         {
             <line x1="85" y1="65" x2="65" y2="82" stroke="currentColor" stroke-width="3" />
         }
-        @if (Model.Partes.Contains("Brazo derecho"))
+        @if (Model.Partes.Contains("Brazo derecho") || Model.Partes.Contains("Brazos"))
         {
             <line x1="85" y1="65" x2="105" y2="82" stroke="currentColor" stroke-width="3" />
         }
-        @if (Model.Partes.Contains("Pierna izquierda"))
+        @if (Model.Partes.Contains("Pierna izquierda") || Model.Partes.Contains("Piernas"))
         {
             <line x1="85" y1="95" x2="68" y2="125" stroke="currentColor" stroke-width="3" />
         }
-        @if (Model.Partes.Contains("Pierna derecha"))
+        @if (Model.Partes.Contains("Pierna derecha") || Model.Partes.Contains("Piernas"))
         {
             <line x1="85" y1="95" x2="102" y2="125" stroke="currentColor" stroke-width="3" />
         }
