@@ -4,8 +4,7 @@ Mecanismo de trazabilidad elegido: **matriz en este archivo**, combinada con eti
 (`@HU-XX`, `@AC-X`) sobre cada Característica/Escenario en los `.feature`. La matriz es la vista humana
 y ejecutable en la defensa; las etiquetas permiten filtrar (`dotnet test --filter Category=HU-02`).
 
-Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZSmVlZjlJL2dUcUgrUlVpQVphM1JnTWZacmJVVUZUdGFaUS9kTStsaGxnekc0VGx4RTVuTjBOWFYvRzRlNldqOFdqT2UyY2d1NDZzTXhiTmllc2dHNnZBVU5zckR3QjljSi9rNzQ5SFRzNnNzVXVvMm53MW9OWFg5bkJoVXZxdFhRPT0hdjE=?share_link_id=377491566949
-
+Link al Story Map: https://miro.com/app/board/uXjVHv7dHMY=/?share_link_id=924213697848
 ## Matriz
 
 | HU | Criterio de aceptación | Escenario (AT) | Unit Tests | Estado |
@@ -21,7 +20,7 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 | **HU-02** Adivinar letras | AC-6: Ingresar algo que no es una letra no cuesta vidas y avisa con el mensaje "Ingresá una sola letra" (GATO + `5` → 6 vidas y `_ _ _ _`). | Ingresar algo que no es una letra no cuesta vidas y avisa (`AdivinarLetras.feature`) | `Entrada_que_no_es_letra_no_descuenta_vida`, `Entrada_que_no_es_letra_queda_informada`, `Un_simbolo_tambien_queda_informado_como_entrada_invalida`, `Entrada_invalida_despues_de_una_repetida_no_queda_como_repetida` | Hecho |
 | **HU-02** Adivinar letras | AC-7: Ingresar más de una letra a la vez no cuesta vidas y avisa con el mensaje "Ingresá una sola letra" (GATO + `AB` → 6 vidas y `_ _ _ _`). | Ingresar más de una letra a la vez no cuesta vidas y avisa (`AdivinarLetras.feature`) | `Entrada_de_mas_de_una_letra_no_descuenta_vida`, `Entrada_de_mas_de_una_letra_queda_informada`, `Otra_entrada_de_mas_de_una_letra_tambien_queda_informada`, `Cadena_vacia_queda_informada_sin_romper` (nace verde: la validación por longitud ya la cubría) | Hecho |
 | **HU-03** Terminar partida | AC-1: Al completar todas las letras de la palabra se ve "GANASTE". | Ganar la partida (`TerminarPartida.feature`) | `Gano_al_adivinar_todas_las_letras`, `No_gano_si_faltan_letras` | Hecho |
-| **HU-03** Terminar partida | AC-2: Al agotar las 6 vidas se ve "PERDISTE" y la palabra revelada. | Perder la partida (`TerminarPartida.feature`) | `Perdio_al_agotar_las_vidas`, `No_perdio_con_cinco_fallos`, `Palabra_se_revela_al_perder` | Hecho |
+| **HU-03** Terminar partida | AC-2: Al agotar las vidas del nivel (6 en el normal) se ve "PERDISTE" y la palabra revelada. | Perder la partida (`TerminarPartida.feature`) | `Perdio_al_agotar_las_vidas`, `No_perdio_con_cinco_fallos`, `Palabra_se_revela_al_perder` | Hecho |
 | **HU-03** Terminar partida | AC-3: Con la partida terminada (ganada o perdida) no se aceptan más letras: las vidas no cambian. | Con la partida terminada no se descuentan vidas (`TerminarPartida.feature`) | `Adivinar_con_la_partida_perdida_no_descuenta_vidas`, `Adivinar_con_la_partida_ganada_no_descuenta_vidas` | Hecho |
 | **HU-04** Jugar con tildes y ñ | AC-1: Una letra sin tilde revela la letra con tilde (CANCIÓN + `O` → `_ _ _ _ _ Ó _`). | Una letra sin tilde revela la letra con tilde (`TildesYEnie.feature`) | `Adivinar_letra_sin_tilde_revela_la_letra_con_tilde`, `Gano_con_palabra_con_tilde`, `Letras_jugadas_registra_la_letra_sin_tilde` | Hecho |
 | **HU-04** Jugar con tildes y ñ | AC-2: La ñ es una letra distinta de la n (NIÑO + `N` → `N _ _ _`). | La ñ es una letra distinta de la n (`TildesYEnie.feature`) | `Adivinar_n_no_revela_la_enie` | Hecho (regresión, nace verde: la ñ ya funcionaba) |
