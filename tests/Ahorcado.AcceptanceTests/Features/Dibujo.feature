@@ -18,3 +18,13 @@ Característica: Dibujo del muñeco
     Dado que ingreso con la palabra "GATO"
     Cuando adivino la letra "A"
     Entonces no veo partes del dibujo
+
+  @AC-3
+  Escenario: En nivel difícil el muñeco se arma en cuatro pasos
+    Dado que ingreso con la palabra "GATO" y el nivel dificil
+    Cuando adivino la letra "E"
+    Y adivino la letra "I"
+    Y adivino la letra "U"
+    Y adivino la letra "B"
+    Entonces veo el resultado "PERDISTE"
+    Y veo el dibujo "Cabeza, Torso, Brazos, Piernas"
