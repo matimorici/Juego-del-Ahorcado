@@ -6,12 +6,13 @@ Construcción del juego utilizando prácticas de ingeniería que permitan evoluc
 
 - **App en producción:** https://juego-del-ahorcado-6spt.onrender.com/
 - **Pipeline (GitHub Actions):** https://github.com/matimorici/Juego-del-Ahorcado/actions
+- **Último run en verde de `main` (5 etapas):** https://github.com/matimorici/Juego-del-Ahorcado/actions/runs/42781913978
 - **Dashboard de calidad (SonarQube Cloud):** https://sonarcloud.io/summary/new_code?id=matimorici_Juego-del-Ahorcado&branch=main
 - **Story Map y trazabilidad Historia → AT → UT:** ver [Notes.md](Notes.md)
 
 ## Pipeline
 
-Cada push (y cada pull request) ejecuta, en orden y cortando ante el primer fallo:
+Cada push a `main` y cada pull request ejecutan, en orden y cortando ante el primer fallo:
 
 1. **build:** compila la solución.
 2. **unit-tests:** unit tests del dominio, con umbral de cobertura del 90% sobre `Ahorcado.Domain`.
@@ -26,4 +27,4 @@ dotnet run --project src/Ahorcado.Web
 dotnet test
 ```
 
-Para fijar la palabra en una partida: `http://localhost:5020/?word=GATO`
+Parámetros útiles: `?word=GATO` fija la palabra, `?seed=3` elige una palabra del banco de forma determinista y `?level=facil` o `?level=dificil` cambia las vidas.
