@@ -17,15 +17,15 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 | **HU-02** Adivinar letras | AC-2: Una letra ausente cuesta una vida. | Fallar una letra (`AdivinarLetras.feature`) | `Adivinar_letra_ausente_descuenta_una_vida`, `Adivinar_dos_letras_ausentes_descuentan_dos_vidas` | Hecho  |
 | **HU-02** Adivinar letras | AC-3: Las letras acertadas se acumulan (GATO + `A` + `T` → `_ A T _`). | Las letras acertadas se acumulan (`AdivinarLetras.feature`) | `Letras_jugadas_registra_la_letra_adivinada`, `Letras_jugadas_acumula_las_letras_en_orden` | Hecho |
 | **HU-02** Adivinar letras | AC-4: Repetir una letra ya probada no cuesta vidas y avisa (GATO + `E` + `E` → 5 vidas y "Ya probaste la letra E"). | Repetir una letra ya probada no cuesta otra vida (`AdivinarLetras.feature`) | `Letra_repetida_no_descuenta_otra_vida`, `Letra_repetida_queda_informada` | Hecho |
-| **HU-02** Adivinar letras | AC-5: Mayúsculas y minúsculas se tratan igual (GATO + `a` → `_ A _ _` y 6 vidas). | Mayúsculas y minúsculas se tratan igual (`AdivinarLetras.feature`) | `Adivinar_letra_en_minuscula_revela_la_letra_en_mayuscula`, `Adivinar_letra_en_minuscula_presente_no_descuenta_vida` | Hecho |
+| **HU-02** Adivinar letras | AC-5: Mayúsculas y minúsculas se tratan igual (GATO + `a` → `_ A _ _` y 6 vidas). | Mayúsculas y minúsculas se tratan igual (`AdivinarLetras.feature`) | `Adivinar_letra_en_minuscula_revela_la_letra_en_mayuscula`, `Adivinar_letra_en_minuscula_presente_no_descuenta_vida`, `Letras_jugadas_registra_la_letra_en_mayuscula` | Hecho |
 | **HU-02** Adivinar letras | AC-6: Ingresar algo que no es una letra no cuesta vidas y avisa con el mensaje "Ingresá una sola letra" (GATO + `5` → 6 vidas y `_ _ _ _`). | Ingresar algo que no es una letra no cuesta vidas y avisa (`AdivinarLetras.feature`) | `Entrada_que_no_es_letra_no_descuenta_vida`, `Entrada_que_no_es_letra_queda_informada`, `Un_simbolo_tambien_queda_informado_como_entrada_invalida`, `Entrada_invalida_despues_de_una_repetida_no_queda_como_repetida` | Hecho |
 | **HU-02** Adivinar letras | AC-7: Ingresar más de una letra a la vez no cuesta vidas y avisa con el mensaje "Ingresá una sola letra" (GATO + `AB` → 6 vidas y `_ _ _ _`). | Ingresar más de una letra a la vez no cuesta vidas y avisa (`AdivinarLetras.feature`) | `Entrada_de_mas_de_una_letra_no_descuenta_vida`, `Entrada_de_mas_de_una_letra_queda_informada`, `Otra_entrada_de_mas_de_una_letra_tambien_queda_informada`, `Cadena_vacia_queda_informada_sin_romper` (nace verde: la validación por longitud ya la cubría) | Hecho |
 | **HU-03** Terminar partida | AC-1: Al completar todas las letras de la palabra se ve "GANASTE". | Ganar la partida (`TerminarPartida.feature`) | `Gano_al_adivinar_todas_las_letras`, `No_gano_si_faltan_letras` | Hecho |
 | **HU-03** Terminar partida | AC-2: Al agotar las 6 vidas se ve "PERDISTE" y la palabra revelada. | Perder la partida (`TerminarPartida.feature`) | `Perdio_al_agotar_las_vidas`, `No_perdio_con_cinco_fallos`, `Palabra_se_revela_al_perder` | Hecho |
 | **HU-03** Terminar partida | AC-3: Con la partida terminada (ganada o perdida) no se aceptan más letras: las vidas no cambian. | Con la partida terminada no se descuentan vidas (`TerminarPartida.feature`) | `Adivinar_con_la_partida_perdida_no_descuenta_vidas`, `Adivinar_con_la_partida_ganada_no_descuenta_vidas` | Hecho |
-| **HU-04** Jugar con tildes y ñ | AC-1: Una letra sin tilde revela la letra con tilde (CANCIÓN + `O` → `_ _ _ _ _ Ó _`). | Una letra sin tilde revela la letra con tilde (`TildesYEnie.feature`) | `Adivinar_letra_sin_tilde_revela_la_letra_con_tilde`, `Gano_con_palabra_con_tilde` | Hecho |
+| **HU-04** Jugar con tildes y ñ | AC-1: Una letra sin tilde revela la letra con tilde (CANCIÓN + `O` → `_ _ _ _ _ Ó _`). | Una letra sin tilde revela la letra con tilde (`TildesYEnie.feature`) | `Adivinar_letra_sin_tilde_revela_la_letra_con_tilde`, `Gano_con_palabra_con_tilde`, `Letras_jugadas_registra_la_letra_sin_tilde` | Hecho |
 | **HU-04** Jugar con tildes y ñ | AC-2: La ñ es una letra distinta de la n (NIÑO + `N` → `N _ _ _`). | La ñ es una letra distinta de la n (`TildesYEnie.feature`) | `Adivinar_n_no_revela_la_enie` | Hecho (regresión, nace verde: la ñ ya funcionaba) |
-| **HU-04** Jugar con tildes y ñ | AC-3: La ñ se descubre ingresando ñ (NIÑO + `Ñ` → `_ _ Ñ _`). | La ñ se descubre ingresando ñ (`TildesYEnie.feature`) | `Adivinar_enie_revela_la_enie` | Hecho (regresión, nace verde: la ñ ya funcionaba) |
+| **HU-04** Jugar con tildes y ñ | AC-3: La ñ se descubre ingresando ñ (NIÑO + `Ñ` → `_ _ Ñ _`). | La ñ se descubre ingresando ñ (`TildesYEnie.feature`) | `Adivinar_enie_revela_la_enie`, `Letras_jugadas_conserva_la_enie` | Hecho (regresión, nace verde: la ñ ya funcionaba) |
 | **HU-05** Palabra al azar | AC-1: Con una semilla dada (`?seed=0`) la partida elige siempre la misma palabra del banco (GATO → `_ _ _ _`). | Con la semilla 0 la palabra es siempre la misma (`PalabraAlAzar.feature`) | `Semilla_cero_elige_gato`, `Semilla_uno_elige_perro`, `Semilla_dos_elige_mariposa`, `Semilla_mayor_a_la_cantidad_de_palabras_da_la_vuelta` (nace verde: el `%` ya lo resolvía), `Semilla_negativa_elige_una_palabra_del_banco` | Hecho |
 | **HU-05** Palabra al azar | AC-2: Semillas distintas eligen palabras distintas (`?seed=1` → PERRO → `_ _ _ _ _`). | Con la semilla 1 la palabra es otra (`PalabraAlAzar.feature`) | `Semilla_uno_elige_perro`, `Semilla_dos_elige_mariposa` (ya cubiertos en AC-1; este AC no agrega UT) | Hecho (regresión, nace verde: el banco ya elegía por semilla) |
 | **HU-05** Palabra al azar | AC-3: Si se indica `?word=`, esa palabra gana sobre `?seed=` (`?word=SOL&seed=1` → `_ _ _`). | La palabra indicada gana sobre la semilla (`PalabraAlAzar.feature`) | Sin UT: la precedencia vive en la página (`Index.cshtml.cs`) y solo la cubre el AT | Hecho (regresión, nace verde: `OnGet` solo elige al azar si `word` viene vacío) |
@@ -50,3 +50,24 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 **Levantar la Web para los AT.** El hook `[BeforeTestRun]` de `WebServerHooks.cs` arranca `Ahorcado.Web` con `dotnet run`, espera un 200 (timeout 60 s) y la mata en `[AfterTestRun]`. Si la web no levanta, la corrida de AT falla (rojo honesto, Guía §6).
 
 **Cosas que pasaron y cómo las resolvimos.** El primer `GREEN:` de HU-01 AC-2 entró sin su `RED:` y se rehízo el ciclo (queda duplicado en el historial; no se reescribió). Dos criterios abiertos en paralelo con el mismo número se renumeraron, y desde entonces los números se reservan en esta matriz antes de abrir un AT.
+
+## Funcionalidades extra (Aprobación Directa)
+
+| Historia | Funcionalidad | Dónde está la lógica de dominio |
+|---|---|---|
+| HU-04 | Tildes y ñ | tabla explícita de normalización (`Normalizar` en `Ahorcado`); la `Ñ` queda fuera de la tabla |
+| HU-05 | Palabra al azar | `BancoDePalabras.Elegir(semilla)`; el seam `?seed=` permite testear de forma determinista |
+| HU-06 | Dificultad | `Dificultad.Vidas(nivel)` y las vidas iniciales de `Ahorcado` (`?level=facil` o `dificil`) |
+| HU-07 | Dibujo del muñeco | `PartesDelMuneco` (una parte por error), dibujado en SVG |
+
+## Evidencia de que cada etapa corta el pipeline
+
+Probamos a propósito, en pull requests descartables (no se mergearon y las ramas se borraron), que un fallo en cada etapa detiene el resto:
+
+| Etapa | Qué rompimos | PR | Resultado |
+|---|---|---|---|
+| Unit tests | un assert de un UT | #33 | `unit-tests` en rojo; las etapas siguientes omitidas |
+| Cobertura | umbral de cobertura imposible | #34 | `unit-tests` en rojo; las etapas siguientes omitidas |
+| Acceptance tests | el texto esperado de un escenario | #35 | `acceptance-tests` en rojo; `deploy` omitido |
+
+El deploy está encadenado con `needs: acceptance-tests` y solo corre en push a `main`.
