@@ -11,7 +11,7 @@ public class Ahorcado
     private readonly HashSet<char> _letrasAdivinadas = new();
 
     private static readonly string[] Partes =
-        { "Cabeza", "Torso", "Brazo izquierdo", "Brazo derecho", "Pierna izquierda", "Pierna derecha" };
+        { "Torso", "Brazo izquierdo", "Brazo derecho", "Pierna izquierda", "Pierna derecha" };
 
     private static readonly string[] PartesDificil = { "Cabeza", "Torso", "Brazos", "Piernas" };
 
