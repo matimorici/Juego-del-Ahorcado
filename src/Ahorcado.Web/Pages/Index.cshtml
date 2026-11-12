@@ -19,6 +19,15 @@
         {
             <circle cx="85" cy="42" r="12" fill="none" stroke="currentColor" stroke-width="3" />
         }
+        @if (Model.Partes.Contains("Ojos"))
+        {
+            <circle cx="81" cy="40" r="1.5" fill="currentColor" />
+            <circle cx="89" cy="40" r="1.5" fill="currentColor" />
+        }
+        @if (Model.Partes.Contains("Boca"))
+        {
+            <path d="M80 47 Q85 52 90 47" fill="none" stroke="currentColor" stroke-width="2" />
+        }
         @if (Model.Partes.Contains("Torso"))
         {
             <line x1="85" y1="54" x2="85" y2="95" stroke="currentColor" stroke-width="3" />
