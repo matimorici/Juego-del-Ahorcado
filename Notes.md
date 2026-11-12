@@ -35,7 +35,8 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 | **HU-06** Dificultad | AC-4: El nivel se mantiene al jugar y el dibujo cuenta errores (GATO + `dificil` + `E` → 3 vidas y dibujo "Cabeza"). | El nivel se mantiene al jugar y el dibujo cuenta errores (`Dificultad.feature`) | `Muneco_con_un_error_en_partida_de_cuatro_vidas_muestra_la_cabeza`, `Muneco_con_un_error_en_partida_de_ocho_vidas_muestra_la_cabeza` | Hecho |
 | **HU-07** Dibujo del muñeco | AC-1: Cada error muestra una parte más del muñeco, en orden (GATO + `E` + `I` → "Cabeza, Torso"). | Cada error muestra una parte más del muñeco (`Dibujo.feature`) | `Muneco_con_un_error_muestra_la_cabeza`, `Muneco_con_dos_errores_muestra_cabeza_y_torso` | Hecho |
 | **HU-07** Dibujo del muñeco | AC-2: Sin errores no se ve ninguna parte (GATO + `A` → sin partes). | Sin errores no se ve ninguna parte del dibujo (`Dibujo.feature`) | `Muneco_con_un_error_muestra_la_cabeza` (cubre el cálculo que hace que sin errores la lista quede vacía) | Hecho (regresión, nace verde: el cálculo ya lo cubría) |
-
+| **HU-07** Dibujo del muñeco | AC-3: En nivel difícil el muñeco se arma en cuatro pasos (GATO + `dificil` + 4 errores → "Cabeza, Torso, Brazos, Piernas" y "PERDISTE"). | En nivel difícil el muñeco se arma en cuatro pasos (`Dibujo.feature`) | `Muneco_en_dificil_con_tres_errores_muestra_cabeza_torso_y_brazos` | Hecho |
+| **HU-07** Dibujo del muñeco | AC-4: En nivel fácil el muñeco se arma en ocho pasos, con ojos y boca (GATO + `facil` + 8 errores → las 8 partes y "PERDISTE"). | En nivel fácil el muñeco se arma en ocho pasos (`Dibujo.feature`) | `Muneco_en_facil_con_dos_errores_muestra_cabeza_y_ojos` | Hecho |
 ## Decisiones técnicas
 **Trazabilidad.** Elegimos la matriz de este archivo más etiquetas de Gherkin (`@HU-XX` en la Característica y `@AC-X` en cada escenario). Una Característica por historia, un escenario por criterio. La matriz es la vista para leer la cadena Historia → criterio → escenario → UT y ver si una historia está terminada (todos sus escenarios en verde). Las etiquetas permiten correr una historia sola (`dotnet test --filter Category=HU-02`). Descartamos los issues del tablero para las historias: tener el estado en dos lugares permite que se contradigan. Los UTs se enlazan por nombre en la matriz: la traza baja hasta el UT sin etiquetar el dominio, que no sabe nada de historias.
 
@@ -50,6 +51,8 @@ Link al Story Map: https://miro.com/welcomeonboard/R2w3Z2dKOFJjZjVUTTlFVnFqeDRZS
 **Levantar la Web para los AT.** El hook `[BeforeTestRun]` de `WebServerHooks.cs` arranca `Ahorcado.Web` con `dotnet run`, espera un 200 (timeout 60 s) y la mata en `[AfterTestRun]`. Si la web no levanta, la corrida de AT falla (rojo honesto, Guía §6).
 
 **Cosas que pasaron y cómo las resolvimos.** El primer `GREEN:` de HU-01 AC-2 entró sin su `RED:` y se rehízo el ciclo (queda duplicado en el historial; no se reescribió). Dos criterios abiertos en paralelo con el mismo número se renumeraron, y desde entonces los números se reservan en esta matriz antes de abrir un AT.
+
+**Muñeco por nivel.** El muñeco tiene tantos pasos como vidas y su secuencia depende del nivel (difícil: cabeza, torso, brazos, piernas; normal: 6 partes; fácil: 8, con ojos y boca), así se completa justo al perder. La secuencia se elige por la cantidad de vidas iniciales, que es lo que ya recibe el dominio, para no cambiar su interfaz. Limitación: un nivel nuevo con otra cantidad de vidas usa la secuencia normal hasta que se le defina la suya.
 
 ## Funcionalidades extra (Aprobación Directa)
 
